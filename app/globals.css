@@ -2,32 +2,89 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+@layer base {
+  body {
+    background-color: #0e1016;
+    overscroll-behavior: none;
+    overflow-x: hidden;
+    font-feature-settings: "rlig" 1, "calt" 1;
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+::-moz-selection {
+  background-color: #0055ff;
+  color: #fff;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+::selection {
+  color: #fff;
+  background-color: #0055ff;
+}
+
+input:-webkit-autofill {
+  filter: none;
+  -webkit-background-clip: text !important;
+  -webkit-box-shadow: 0 0 0px 1000px #101010 inset;
+  -webkit-text-fill-color: rgba(255, 255, 255, 255);
+  border-radius: 20px;
+}
+
+@font-face {
+  font-family: "PolySans Neutral";
+  src: url("/fonts/PolySans-Neutral.woff") format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "CabinetGrotesk Black";
+  src: url("/fonts/CabinetGrotesk-Black.woff") format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "CabinetGrotesk Bold";
+  src: url("/fonts/CabinetGrotesk-Bold.woff") format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "CabinetGrotesk ExtraBold";
+  src: url("/fonts/CabinetGrotesk-Extrabold.woff") format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "CabinetGrotesk Medium";
+  src: url("/fonts/CCabinetGrotesk-Medium.woff") format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "CabinetGrotesk Variable";
+  src: url("/fonts/CabinetGrotesk-Variable.woff") format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "CabinetGrotesk Regular";
+  src: url("/fonts/CabinetGrotesk-Regular.woff") format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "CabinetGrotesk Light";
+  src: url("/fonts/CabinetGrotesk-Light.woff") format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "CabinetGrotesk Thin";
+  src: url("/fonts/CabinetGrotesk-Thin.woff") format("opentype");
+  font-display: swap;
+}
+
+body,
+html {
+  overflow-x: hidden !important;
+  font-family: "PolySans Neutral";
 }
