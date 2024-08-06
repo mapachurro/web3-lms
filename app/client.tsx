@@ -7,6 +7,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { http } from "viem";
 import { WagmiProvider, createConfig } from "@privy-io/wagmi";
 import { AirstackProvider } from "@airstack/airstack-react";
+import { AuthWrapper } from "@/components/AuthWrapper";
 
 export const wagmiConfig = createConfig({
   chains: [baseSepolia, base],
@@ -49,7 +50,7 @@ const ClientProvider = ({ children }: any) => {
       <QueryClientProvider client={queryClient}>
         <WagmiProvider config={wagmiConfig} reconnectOnMount={false}>
           <AirstackProvider apiKey={AIRSTACK_API_KEY}>
-            {children}
+            <AuthWrapper>{children}</AuthWrapper>
           </AirstackProvider>
         </WagmiProvider>
       </QueryClientProvider>
