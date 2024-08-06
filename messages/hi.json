@@ -1,5 +1,12 @@
 {
   "IndexPage": {
-    "header": "Surf school for base, but cooler"
+    "header": "Surf school for",
+    "header-half": "but cooler",
+    "header-desc": "आकर्षक पुरस्कार अर्जित करते हुए बेस पर संभावनाओं के माध्यम से जानें, खोजें और सर्फ़ करें।",
+    "header-btn": "उपयोग करो",
+    "navbar-btn": "ऐप लांच करें",
+    "navbar-item1": "विशेषताएँ",
+    "navbar-item2": "पारिस्थितिकी प्रणालियों",
+    "navbar-item3": "समूह"
   }
 }

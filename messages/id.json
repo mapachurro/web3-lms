@@ -1,5 +1,12 @@
 {
   "IndexPage": {
-    "header": "Surf school for base, but cooler"
+    "header": "Surf school for",
+    "header-half": "but cooler",
+    "header-desc": "Pelajari, Temukan, dan Jelajahi berbagai kemungkinan di Base sambil mendapatkan hadiah menarik",
+    "header-btn": "Mendapatkan Akses",
+    "navbar-btn": "Luncurkan Aplikasi",
+    "navbar-item1": "Fitur",
+    "navbar-item2": "Ekosistem",
+    "navbar-item3": "kelompok"
   }
 }

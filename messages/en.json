@@ -1,5 +1,12 @@
 {
   "IndexPage": {
-    "header": "Surf school for base, but cooler"
+    "header": "Surf school for",
+    "header-half": "but cooler",
+    "header-desc": "Learn, Discover, and Surf through possibilities on Base while earning juicy rewards.",
+    "header-btn": "Get Access",
+    "navbar-btn": "Launch App",
+    "navbar-item1": "Features",
+    "navbar-item2": "Ecosystems",
+    "navbar-item3": "Cohorts"
   }
 }

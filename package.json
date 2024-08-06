@@ -10,9 +10,11 @@
   },
   "dependencies": {
     "@airstack/airstack-react": "^0.6.4",
+    "@headlessui/react": "^2.1.2",
     "@privy-io/react-auth": "^1.77.0",
     "@privy-io/wagmi": "^0.2.12",
     "@tanstack/react-query": "^5.51.21",
+    "mongodb": "^6.8.0",
     "next": "14.2.5",
     "next-intl": "^3.17.2",
     "nookies": "^2.5.2",
