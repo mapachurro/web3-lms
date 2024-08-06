@@ -2,12 +2,8 @@
 
 export default function NotFound() {
   return (
-    <html>
-      <body>
-        <h1 className="text-white text-center mt-10 text-xl font-polysans">
-          Something went wrong
-        </h1>
-      </body>
-    </html>
+    <h1 className="text-white bg-black text-center mt-10 text-xl font-polysans">
+      Something went wrong
+    </h1>
   );
 }
