@@ -99,7 +99,7 @@ html {
   width: 100px;
   height: 100px;
   background: #ccc;
-  border: 5px solid #0055ff;
+  border: 5px solid #527ffe;
   border-radius: 50%;
   overflow: hidden;
 }
@@ -107,7 +107,7 @@ html {
   position: relative;
   width: 100%;
   height: 100%;
-  background: #0055ff;
+  background: #527ffe;
   border-radius: 50%;
   box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.5);
 }
@@ -124,14 +124,14 @@ html {
 .wave:before {
   border-radius: 45%;
   background: rgba(0, 0, 0, 1);
-  animation: animate 5s linear infinite;
+  animation: circle 5s linear infinite;
 }
 .wave:after {
   border-radius: 40%;
   background: rgba(0, 0, 0, 0.5);
-  animation: animate 10s linear infinite;
+  animation: circle 10s linear infinite;
 }
-@keyframes animate {
+@keyframes circle {
   0% {
     transform: translate(-50%, -75%) rotate(0deg);
   }
@@ -141,7 +141,6 @@ html {
 }
 
 /* wave button  */
-
 .wave-button {
   position: relative;
   display: block;
@@ -159,7 +158,7 @@ html {
 .wave-button .liquid {
   position: absolute;
   left: 0;
-  background: #0055ff;
+  background: #527ffe;
   box-sizing: inset 0 0 50px rgba(0, 0, 0, 0.5);
   transition: 0.5s;
 }
@@ -178,7 +177,7 @@ html {
 .wave-button .liquid::before {
   border-radius: 45%;
   background: rgba(20, 20, 20, 1);
-  animation: animate 5s linear infinite;
+  animation: wave 5s linear infinite;
 }
 
 .wave-button .liquid::after {
@@ -197,7 +196,6 @@ html {
 }
 
 /* waves in word  */
-
 .relative {
   position: relative;
 }
@@ -222,10 +220,10 @@ html {
 
 .base-text-fill {
   color: #89adf5;
-  animation: animate 4s ease-in-out infinite;
+  animation: word 4s ease-in-out infinite;
 }
 
-@keyframes animate {
+@keyframes word {
   0%,
   100% {
     clip-path: polygon(
