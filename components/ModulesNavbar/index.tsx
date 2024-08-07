@@ -155,7 +155,7 @@ const ModulesNavbar = () => {
                   <p className="text-md">About Streaks</p>
                   <p className="text-sm my-1">
                     Streaks reset every day at 00:00 UTC. Your streak will break
-                    if you don't gm tomorrow.
+                    if you don&apos;t gm tomorrow.
                   </p>
                 </div>
               </div>
@@ -327,7 +327,7 @@ const ModulesNavbar = () => {
                     <p className="text-md">About Streaks</p>
                     <p className="text-sm my-1">
                       Streaks reset every day at 00:00 UTC. Your streak will
-                      break if you don't gm tomorrow.
+                      break if you don&apos;t gm tomorrow.
                     </p>
                   </div>
                 </div>
