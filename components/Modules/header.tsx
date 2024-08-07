@@ -4,7 +4,7 @@ import { DocumentIcon } from "@heroicons/react/24/solid";
 
 const ModulesHeader: React.FC = () => {
   return (
-    <div className="text-white p-6 rounded-lg flex justify-between items-center">
+    <div className="text-white rounded-lg flex justify-between items-center">
       <div>
         <h2 className="text-3xl font-cg-regular mb-2 max-w-xs">
           Complete the quests to get the extra rewards

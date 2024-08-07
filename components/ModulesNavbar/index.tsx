@@ -277,7 +277,7 @@ const ModulesNavbar = () => {
             <div className="-my-6 divide-y divide-gray-300/10">
               <div className="flex flex-col space-y-2 py-6">
                 <div className="relative z-10">
-                  <div className="transition-all select-none rounded-lg font-polysans flex items-center gap-1 text-center group text-sm py-2 text-gray-10 hover:brightness-90 cursor-not-allowed">
+                  <div className="transition-all select-none rounded-lg font-polysans flex items-center gap-1 text-center group text-sm py-2 text-gray-10 hover:brightness-90">
                     <Image
                       src="/images/shell.png"
                       alt="gm"
