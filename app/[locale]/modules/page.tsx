@@ -2,9 +2,10 @@
 
 import React from "react";
 import withAuth from "@/utils/withAuth";
+import ModulesPage from "@/components/Modules";
 
 const Modules = () => {
-  return <div className="relative w-full">Modules</div>;
+  return <ModulesPage />;
 };
 
 export default withAuth(Modules);
