@@ -59,7 +59,7 @@ export default function LocaleSwitcher() {
                   onClick={() => handleLocaleChange("en")}
                   className={classNames(
                     focus ? "bg-black text-white" : "text-white",
-                    "block px-4 py-2 text-xs hover:bg-grey"
+                    "block px-4 py-2 text-sm hover:bg-grey"
                   )}
                 >
                   English
@@ -74,7 +74,7 @@ export default function LocaleSwitcher() {
                   onClick={() => handleLocaleChange("id")}
                   className={classNames(
                     focus ? "bg-black text-white" : "text-white",
-                    "block px-4 py-2 text-xs hover:bg-grey"
+                    "block px-4 py-2 text-sm hover:bg-grey"
                   )}
                 >
                   Bahasa Indonesia
@@ -89,7 +89,7 @@ export default function LocaleSwitcher() {
                   onClick={() => handleLocaleChange("hi")}
                   className={classNames(
                     focus ? "bg-black text-white" : "text-white",
-                    "block px-4 py-2 text-xs hover:bg-grey"
+                    "block px-4 py-2 text-sm hover:bg-grey"
                   )}
                 >
                   हिंदी
