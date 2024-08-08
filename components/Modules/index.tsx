@@ -1,10 +1,13 @@
 import React from "react";
 import { useRouter } from "next/navigation";
 import { modules } from "@/lib/modules";
+import RecentLearners from "./recent-learners";
 import { useAuthRedirect } from "@/hooks/useAuthRedirect";
 import Loading from "@/components/UI/Loading";
+import QuickDive from "./quick-dive";
 import ModulesHeader from "./header";
 import Image from "next/image";
+import Refer from "./refer";
 
 const ModulesPage = () => {
   const router = useRouter();
@@ -68,6 +71,11 @@ const ModulesPage = () => {
         </div>
       </div>
       {/* right container  */}
+      <div>
+        <QuickDive />
+        <RecentLearners />
+        <Refer />
+      </div>
     </div>
   );
 };

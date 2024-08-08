@@ -140,6 +140,82 @@ html {
   }
 }
 
+.marquee-container {
+  overflow: hidden;
+  height: 300px; /* Adjust height as needed */
+  position: relative;
+}
+
+.marquee-content {
+  display: flex;
+  flex-direction: column;
+  animation: marquee 10s linear infinite; /* Adjust duration as needed */
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+.marquee-content::after {
+  content: "";
+  display: block;
+  height: 100%;
+}
+
+.social-button {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  outline: none;
+  width: 40px;
+  height: 40px;
+  text-decoration: none;
+  border-radius: 8px;
+  background: black;
+  text-align: center;
+}
+
+.social-button::after {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 50%;
+  display: block;
+  width: 0;
+  height: 0;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+.social-button:focus,
+.social-button:hover {
+  color: #fff;
+}
+.social-button:focus::after,
+.social-button:hover::after {
+  width: calc(100% + 2px);
+  height: calc(100% + 2px);
+  margin-left: calc(-50% - 1px);
+}
+
+.social-button img {
+  position: relative;
+  z-index: 1;
+  transition: 0.3s;
+}
+
+.social-button {
+  color: #fff;
+}
+.social-button::after {
+  background: linear-gradient(to right, #7e95d4, #0055ff);
+}
+
 /* wave button  */
 .wave-button {
   position: relative;
