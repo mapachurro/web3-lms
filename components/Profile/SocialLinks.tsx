@@ -9,9 +9,9 @@ interface SocialLinksProps {
 const SocialLinks: React.FC<SocialLinksProps> = ({ unifiedProfile }) => {
   const getSocialIcon = (platform: string | number) => {
     const icons: Record<SocialPlatform, string> = {
-      Farcaster: "/images/W.svg",
+      Farcaster: "/images/fc.svg",
       Lens: "/images/lens.svg",
-      // X: "/images/twitter.svg",
+      X: "/images/x.svg",
       LinkedIn: "/images/linkedin_symbol.svg",
       // Instagram: "/images/instagram.svg",
       GitHub: "/images/github.svg",
@@ -36,7 +36,8 @@ const SocialLinks: React.FC<SocialLinksProps> = ({ unifiedProfile }) => {
       github: "./images/github.svg",
       linkedin: "./images/linkedin_symbol.svg",
       lens: "./images/lens.svg",
-      farcaster: "./images/W.svg",
+      farcaster: "./images/fc.svg",
+      x: "./images/x.svg",
     };
     return iconMap[source] ? (
       <img src={iconMap[source]} className="w-6 h-6" alt={source} />

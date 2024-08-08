@@ -5,6 +5,8 @@ import { UserCircleIcon } from "@heroicons/react/24/solid";
 import { usePrivy } from "@privy-io/react-auth";
 import { useRouter } from "next/navigation";
 import { PartialUserData, User } from "@/types/user";
+import OutlineButton from "@/components/UI/Button/OutlineButton";
+import WhiteButton from "@/components/UI/Button/WhiteButton";
 
 interface EditProfileDialogProps {
   isOpen: boolean;
@@ -34,7 +36,7 @@ const EditProfileDialog: React.FC<EditProfileDialogProps> = ({
   const socialPlatforms = [
     "Farcaster",
     "Lens",
-    // "X",
+    "X",
     "LinkedIn",
     // "Instagram",
     "GitHub",
@@ -168,25 +170,22 @@ const EditProfileDialog: React.FC<EditProfileDialogProps> = ({
         <div className="fixed inset-0 bg-black/30" aria-hidden="true" />
         <div className="fixed inset-0 flex items-center justify-center p-4">
           <DialogPanel className="mx-auto max-w-lg rounded-2xl bg-black border border-gray-600 p-6 h-5/6 overflow-auto">
-            <DialogTitle className="text-lg font-medium leading-6 text-gray-900">
+            <DialogTitle className="text-lg font-cg-regular leading-6 text-gray-200">
               Edit Profile
             </DialogTitle>
             <form onSubmit={handleSubmit}>
               <div className="space-y-12">
                 <div className="border-b border-white/10 pb-12">
-                  <h2 className="text-base font-semibold leading-7 text-white">
-                    Profile
-                  </h2>
                   <p className="mt-1 text-sm leading-6 text-gray-400">
                     This information will be displayed publicly so be careful
                     what you share.
                   </p>
 
-                  <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+                  <div className="mt-8 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                     <div className="sm:col-span-4">
                       <label
                         htmlFor="username"
-                        className="block text-sm font-medium leading-6 text-white"
+                        className="block text-sm font-medium leading-6 text-gray-100"
                       >
                         Name
                       </label>
@@ -200,7 +199,7 @@ const EditProfileDialog: React.FC<EditProfileDialogProps> = ({
                             placeholder="shrutz"
                             type="text"
                             autoComplete="name"
-                            className="pl-2 flex-1 border-0 bg-transparent py-1.5 text-white focus:ring-0 sm:text-sm sm:leading-6"
+                            className="pl-2 flex-1 border-0 bg-transparent py-1.5 text-gray-100 focus:ring-0 sm:text-sm sm:leading-6"
                           />
                         </div>
                       </div>
@@ -209,7 +208,7 @@ const EditProfileDialog: React.FC<EditProfileDialogProps> = ({
                     <div className="col-span-full">
                       <label
                         htmlFor="about"
-                        className="block text-sm font-medium leading-6 text-white"
+                        className="block text-sm font-medium leading-6 text-gray-100"
                       >
                         About
                       </label>
@@ -221,7 +220,7 @@ const EditProfileDialog: React.FC<EditProfileDialogProps> = ({
                           onChange={handleInputChange}
                           placeholder="Bio"
                           rows={3}
-                          className="pl-2 block w-full rounded-md border-0 bg-white/5 py-1.5 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
+                          className="pl-2 block w-full rounded-md border-0 bg-white/5 py-1.5 text-gray-100 shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
                           defaultValue={""}
                         />
                       </div>
@@ -233,7 +232,7 @@ const EditProfileDialog: React.FC<EditProfileDialogProps> = ({
                     <div className="col-span-full">
                       <label
                         htmlFor="photo"
-                        className="block text-sm font-medium leading-6 text-white"
+                        className="block text-sm font-medium leading-6 text-gray-100"
                       >
                         Avatar
                       </label>
@@ -257,26 +256,26 @@ const EditProfileDialog: React.FC<EditProfileDialogProps> = ({
                           accept="image/*"
                           className="hidden"
                         />
-                        <Button
+                        <OutlineButton
                           onClick={(e) => {
                             e.preventDefault(); // Prevent form submission
                             fileInputRef.current?.click();
                           }}
                           disabled={isUploading}
-                          additionalStyles="rounded-md bg-white/10 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-white/20"
+                          additionalStyles="text-sm text-gray-200 border border-gray-700 hover:shadow-sm hover:shadow-gray-600 px-4 py-1 font-polysans"
                         >
                           {isUploading ? "Uploading..." : "Change"}
-                        </Button>
+                        </OutlineButton>
                       </div>
                     </div>
                   </div>
                 </div>
 
                 <div className="border-b border-white/10 pb-12">
-                  <h2 className="text-base font-semibold leading-7 text-white">
+                  <h2 className="text-md font-cg-regular leading-7 text-gray-100">
                     Social Information
                   </h2>
-                  <p className="mt-1 text-sm leading-6 text-gray-400">
+                  <p className="text-sm leading-6 text-gray-400">
                     Use social links to tell users more about you
                   </p>
 
@@ -285,7 +284,7 @@ const EditProfileDialog: React.FC<EditProfileDialogProps> = ({
                       <div className="sm:col-span-3" key={platform}>
                         <label
                           htmlFor="social"
-                          className="block text-sm font-medium leading-6 text-white"
+                          className="block text-sm font-medium leading-6 text-gray-100"
                         >
                           {platform}
                         </label>
@@ -298,7 +297,7 @@ const EditProfileDialog: React.FC<EditProfileDialogProps> = ({
                               handleSocialChange(platform, e.target.value)
                             }
                             placeholder={`Link to your ${platform} account`}
-                            className="block w-full rounded-md border-0 bg-white/5 py-1.5 pl-2 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
+                            className="block w-full rounded-md border-0 bg-white/5 py-1.5 pl-2 text-gray-100 shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
                           />
                         </div>
                       </div>
@@ -308,31 +307,33 @@ const EditProfileDialog: React.FC<EditProfileDialogProps> = ({
               </div>
 
               <div className="border-b border-white/10 py-8">
-                <h1 className="text-gray-100 text-lg">Delete Account</h1>
+                <h1 className="text-gray-100 text-lg font-cg-regular">
+                  Delete Account
+                </h1>
                 <p className="text-gray-400 text-sm max-w-xs">
                   Delete account and remove attached address. This action is
                   irreversible.
                 </p>
 
-                <Button
+                <WhiteButton
                   onClick={() => setIsDeleteModalOpen(true)}
-                  additionalStyles="bg-red-500 hover:bg-red-600 text-white px-2 py-1 mt-4 hover:bg-transparent hover:border hover:border-gray-800 transition ease-in"
+                  additionalStyles="px-4 py-1 mt-4 transition ease-in"
                 >
                   Delete Account
-                </Button>
+                </WhiteButton>
               </div>
 
               <div className="mt-6 flex items-center justify-end gap-x-6">
                 <button
                   type="button"
                   onClick={onClose}
-                  className="text-sm font-semibold leading-6 text-white"
+                  className="text-sm font-semibold leading-6 text-gray-100"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="rounded-full bg-primary px-3 py-2 text-sm font-polysans text-white shadow-sm hover:bg-transparent hover:border hover:border-gray-800 transition ease-in"
+                  className="rounded-full bg-blue-600 px-3 py-2 text-sm font-polysans text-gray-100 shadow-sm hover:bg-transparent hover:border hover:border-gray-800 transition ease-in"
                 >
                   Update Profile
                 </button>
@@ -350,7 +351,7 @@ const EditProfileDialog: React.FC<EditProfileDialogProps> = ({
         <div className="fixed inset-0 bg-black/30" aria-hidden="true" />
         <div className="fixed inset-0 flex items-center justify-center p-4">
           <DialogPanel className="mx-auto max-w-sm rounded-2xl bg-black border border-gray-600 p-6">
-            <DialogTitle className="text-lg font-medium leading-6 text-white">
+            <DialogTitle className="text-lg font-medium leading-6 text-gray-100">
               Confirm Account Deletion
             </DialogTitle>
             <p className="mt-2 text-sm text-gray-400">
@@ -360,13 +361,13 @@ const EditProfileDialog: React.FC<EditProfileDialogProps> = ({
             <div className="mt-4 flex justify-end space-x-2">
               <Button
                 onClick={() => setIsDeleteModalOpen(false)}
-                additionalStyles="border border-gray-700 hover:shadow-sm hover:shadow-gray-600 text-white px-4 py-1"
+                additionalStyles="border border-gray-700 hover:shadow-sm hover:shadow-gray-600 text-gray-100 px-4 py-1"
               >
                 Cancel
               </Button>
               <Button
                 onClick={handleDeleteAccount}
-                additionalStyles="bg-red-500 hover:shadow-sm hover:shadow-gray-600 text-white px-4 py-1"
+                additionalStyles="bg-red-500 hover:shadow-sm hover:shadow-gray-600 text-gray-100 px-4 py-1"
               >
                 Delete
               </Button>

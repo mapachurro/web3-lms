@@ -31,7 +31,7 @@ export interface TalentData {
 export type SocialPlatform =
   | "Farcaster"
   | "Lens"
-  // | "X"
+  | "X"
   | "LinkedIn"
   // | "Instagram"
   | "GitHub";

@@ -13,7 +13,7 @@ interface ButtonProps {
 
 const buttonStyles = `
   relative inline-flex items-center justify-center
-  rounded-full py-3 px-6 text-lg font-semibold text-white
+  rounded-full font-polysans text-white
   bg-gradient-to-b from-[#90B5FF] to-[#0055FF]
   shadow-[0_0_0_1px_rgba(255,255,255,0.2),0_0_0_3px_rgba(0,85,255,0.3),0_0_0_6px_rgba(0,85,255,0.1)]
   hover:shadow-[0_0_0_1px_rgba(255,255,255,0.3),0_0_0_3px_rgba(0,85,255,0.4),0_0_0_6px_rgba(0,85,255,0.2)]

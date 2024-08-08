@@ -12,13 +12,13 @@
 }
 
 ::-moz-selection {
-  background-color: #0055ff;
+  background-color: #527ffe;
   color: #fff;
 }
 
 ::selection {
   color: #fff;
-  background-color: #0055ff;
+  background-color: #527ffe;
 }
 
 input:-webkit-autofill {

@@ -37,12 +37,12 @@ const ProfileHeader: React.FC<ProfileHeaderProps> = ({
           <img
             src={unifiedProfile.avatar}
             alt="avatar"
-            className="w-full h-full rounded-full object-cover border-4 border-primary"
+            className="w-full h-full rounded-full object-cover border-4 border-gray-800"
           />
         ) : (
-          <div className="w-full h-full bg-black text-transparent rounded-full border-4 border-primary"></div>
+          <div className="w-full h-full bg-black text-transparent rounded-full border-4 border-gray-800"></div>
         )}
-        <div className="absolute bottom-0 left-0 bg-primary rounded-2xl w-8 h-8 flex items-center justify-center">
+        <div className="absolute bottom-0 left-0 bg-gray-900 border border-gray-700 rounded-2xl w-8 h-8 flex items-center justify-center">
           <span className="text-white text-xs font-polysans">
             {combinedScore !== null ? Math.round(combinedScore) : "N/A"}
           </span>

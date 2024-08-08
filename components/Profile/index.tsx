@@ -10,13 +10,13 @@ import { TalentData, UnifiedProfile } from "@/types/profile";
 import { PartialUserData, User } from "@/types/user";
 import { formatDate } from "@/utils/formatDate";
 import ProfileHeader from "./ProfileHeader";
-import Button from "@/components/UI/Button/Button";
 import SocialLinks from "./SocialLinks";
 import ProfileBio from "./ProfileBio";
 import ProfileStats from "./ProfileStats";
 import { determineUserRole } from "@/utils/userRole";
 import Badges from "./Badges";
 import { useGetPrimaryENS } from "@airstack/airstack-react";
+import OutlineButton from "@/components/UI/Button/OutlineButton";
 
 const ProfilePage = () => {
   const { user } = usePrivy();
@@ -181,12 +181,12 @@ const ProfilePage = () => {
             fullAddress={fullAddress || ""}
           />
           <div className="justify-self-end md:justify-self-start ml-10 md:ml-0">
-            <Button
+            <OutlineButton
               onClick={() => setIsEditDialogOpen(true)}
               additionalStyles="text-sm text-gray-200 border border-gray-700 hover:shadow-sm hover:shadow-gray-600 px-4 py-1 font-polysans"
             >
               Edit profile
-            </Button>
+            </OutlineButton>
           </div>
         </div>
         {unifiedProfile && (
