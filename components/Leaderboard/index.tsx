@@ -1,4 +1,3 @@
-import ModulesNavbar from "@/components/ModulesNavbar";
 import Image from "next/image";
 import React from "react";
 
@@ -96,8 +95,7 @@ const activityItems = [
 
 const Leaderboard = () => {
   return (
-    <div>
-      <ModulesNavbar />
+    <>
       <div className="py-24 px-10">
         <h1 className="text-2xl text-gray-100 font-cg-regular">Leaderboard</h1>
         <p className="text-md text-gray-400">
@@ -228,7 +226,7 @@ const Leaderboard = () => {
           </tbody>
         </table>
       </div>
-    </div>
+    </>
   );
 };
 

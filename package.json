@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@airstack/airstack-react": "^0.6.4",
+    "@brian-ai/sdk": "^0.2.1",
     "@headlessui/react": "^2.1.2",
     "@privy-io/react-auth": "^1.77.0",
     "@privy-io/wagmi": "^0.2.12",
