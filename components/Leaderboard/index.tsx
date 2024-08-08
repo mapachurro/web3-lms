@@ -20,6 +20,7 @@ const activityItems = [
     },
     points: "10",
     streak: "28",
+    score: "62",
   },
   {
     rank: "2",
@@ -30,6 +31,7 @@ const activityItems = [
     },
     points: "10",
     streak: "28",
+    score: "62",
   },
   {
     rank: "3",
@@ -40,6 +42,7 @@ const activityItems = [
     },
     points: "10",
     streak: "28",
+    score: "62",
   },
   {
     rank: "4",
@@ -50,6 +53,7 @@ const activityItems = [
     },
     points: "10",
     streak: "28",
+    score: "62",
   },
   {
     rank: "5",
@@ -60,6 +64,7 @@ const activityItems = [
     },
     points: "10",
     streak: "28",
+    score: "62",
   },
   {
     rank: "6",
@@ -70,6 +75,7 @@ const activityItems = [
     },
     points: "10",
     streak: "28",
+    score: "62",
   },
   {
     rank: "7",
@@ -80,6 +86,7 @@ const activityItems = [
     },
     points: "10",
     streak: "28",
+    score: "62",
   },
   {
     rank: "8",
@@ -90,6 +97,7 @@ const activityItems = [
     },
     points: "10",
     streak: "28",
+    score: "62",
   },
 ];
 
@@ -162,6 +170,12 @@ const Leaderboard = () => {
               </th>
               <th
                 scope="col"
+                className="py-2 pl-0 pr-8 text-center font-cg-regular sm:pr-8 sm:text-left lg:pr-20"
+              >
+                Knowledge Score
+              </th>
+              <th
+                scope="col"
                 className="py-2 pl-0 pr-4 text-center font-cg-regular sm:pr-8 sm:text-left lg:pr-20"
               >
                 Streak
@@ -194,6 +208,9 @@ const Leaderboard = () => {
                       {item.user.name}
                     </div>
                   </div>
+                </td>
+                <td className="py-4 pl-10 pr-8 text-gray-300">
+                  <div className="flex items-center">{item.score}</div>
                 </td>
                 <td className="py-4 pr-8 text-gray-300">
                   <div className="flex items-center">

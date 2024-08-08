@@ -66,7 +66,7 @@ const Header = ({ locale }: any) => {
                   <div className="flex mt-8 items-center justify-center gap-4">
                     <Button
                       onClick={() => login()}
-                      additionalStyles="z-10 text-md py-1.5 px-6 lg:px-4 sm:px-4 font-polysans"
+                      additionalStyles="z-10 text-md py-3 px-6 lg:px-4 sm:px-4 font-polysans"
                     >
                       <div className="flex items-center gap-2">
                         <span>{t("header-btn")} </span>
