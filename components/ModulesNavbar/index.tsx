@@ -316,12 +316,7 @@ const ModulesNavbar = () => {
                     <span className="ml-1 text-sm text-white lg:mr-0">
                       {streakCount}&nbsp;
                     </span>
-                    <span className="text-xs text-gray-200 hidden lg:inline">
-                      GM
-                    </span>
-                    <span className="inline text-gray-200 lg:hidden font-thin">
-                      GM
-                    </span>
+                    <span className="inline text-gray-200 font-thin">GM</span>
                   </button>
                   <div className="absolute -bottom-2 left-1/3 transform -translate-x-1/2 translate-y-full px-4 py-2 w-64 bg-black border border-grey text-white rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <p className="text-md">About Streaks</p>
