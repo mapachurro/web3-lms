@@ -13,9 +13,5 @@ export interface Level {
   title: string;
   description: string;
   content: LevelContent[];
-  quiz: {
-    question: string;
-    options: string[];
-    answer: string;
-  }[];
+  progress?: string;
 }

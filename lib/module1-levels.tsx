@@ -2,8 +2,10 @@ import Poll from "@/components/UI/Poll";
 import { Level } from "@/types/levels";
 import Image from "next/image";
 import Link from "next/link";
+import Quiz from "./module1-level1-quiz";
+import SpeedOMeter from "@/components/Modules/speedometer";
 
-const BaseOrigins = [
+const BaseOrigins: Level["content"] = [
   {
     title: "Welcome to Base Camp, surfers!",
     content: (
@@ -27,25 +29,6 @@ const BaseOrigins = [
       </div>
     ),
   },
-  // {
-  //   title: "Quick terms",
-  //   content: (
-  //     <div className="text-gray-200">
-  //       <h3 className="text-xl font-bold mb-2">Skip if you already know</h3>
-  //       <ul className="list-disc pl-5">
-  //         <li>
-  //           <strong>L2 (Layer 2):</strong> A blockchain layer working on top of
-  //           another blockchain layer to make the process user friendly. Base (an
-  //           L2) works on top of Ethereum (an L1).
-  //         </li>
-  //         <li>
-  //           <strong>Dencun Upgrade:</strong> A recent Ethereum update that made
-  //           Layer 2 solutions like Base even more efficient.
-  //         </li>
-  //       </ul>
-  //     </div>
-  //   ),
-  // },
   {
     title: "📈 Riding the Growth Tsunami",
     content: (
@@ -199,43 +182,63 @@ const BaseOrigins = [
   },
   {
     title: "Ready to hang ten with your newfound knowledge? Catch this wave!",
+    content: <Quiz />,
+  },
+  {
+    title: "Bonus Insight",
     content: (
-      <div className="text-gray-200">
-        <p className="text-lg">
-          Which of these statements best describes why Base is making waves in
-          the crypto ocean?
+      <div className="text-gray-200 text-lg">
+        <p>
+          While Base is making a big splash with its growing number of daily
+          transactions (we're talking millions, surfer!), what really sets it
+          apart is how it leverages Ethereum's strength while solving some of
+          its challenges.
+          <br />
+          It's not about replacing Ethereum, but enhancing it – like adding a
+          perfect offshore wind to already great surfing conditions!
         </p>
-        <ol
-          className="list-disc pl-5 text-md"
-          style={{ listStyle: "inside", listStyleType: "decimal" }}
-        >
-          <li className="mt-2">It's the only Layer 2 solution for Ethereum</li>
-          <li className="mt-2">It offers its own native cryptocurrency</li>
-          <li className="mt-2">
-            It combines Ethereum's security with improved scalability and lower
-            fees
-          </li>
-          <li className="mt-2">It's completely independent of Ethereum</li>
-        </ol>
       </div>
     ),
   },
   {
-    title: "Level Complete",
+    title: "Now, let's see those savings in action!",
+    content: <SpeedOMeter />,
+  },
+  {
+    title: "Whoa!",
     content: (
-      <div className="text-gray-200">
-        <h3 className="text-xl font-bold mb-2">🏄‍♂️🌟 Level Up!</h3>
+      <div className="text-gray-200 text-lg">
         <p>
-          Congratulations, Beach Wanderer! You've completed your first level and
-          earned your first seashell. You're ready to paddle out to deeper
-          waters.
-        </p>
-        <p>
-          Next up: "Getting Started with Base" - where we'll show you how to
-          grab your board (wallet) and catch your first Base wave!
+          Did you see how much faster and cheaper that was on Base? Pretty rad,
+          right?
         </p>
       </div>
     ),
+  },
+  {
+    title: "Level Up! 🏄‍♂️🌟",
+    content: (
+      <div className="text-gray-200 text-lg">
+        <p>
+          Congratulations, Beach Wanderer! You've completed your first level and
+          earned 20 seashells.
+          <br />
+        </p>
+        <p className="mt-2">You're ready to paddle out to deeper waters.</p>
+        <p className="mt-2">
+          Next up: "Getting Started with Base" - where we'll show you how to
+          grab your board (wallet) and catch your first Base wave!
+        </p>
+        <p className="mt-2 text-blue-500">Ready to keep surfing?</p>
+      </div>
+    ),
+  },
+];
+
+export const ComingSoon = [
+  {
+    title: "Coming Soon",
+    content: <div className="text-gray-200"></div>,
   },
 ];
 
@@ -246,74 +249,26 @@ export const levels: Level[] = [
     description:
       "Discover the foundations of Base and its relationship with Ethereum.",
     content: BaseOrigins,
-    quiz: [
-      {
-        question: "What is Base?",
-        options: [
-          "A cryptocurrency exchange",
-          "A Layer 1 blockchain",
-          "A Layer 2 solution for Ethereum",
-          "A type of crypto wallet",
-        ],
-        answer: "A Layer 2 solution for Ethereum",
-      },
-    ],
   },
   {
     id: "2",
     title: "Getting Started with Base",
     description:
       "Discover the foundations of Base and its relationship with Ethereum.",
-    content: BaseOrigins,
-    quiz: [
-      {
-        question: "In the highway analogy, what does Base represent?",
-        options: [
-          "A new, separate highway",
-          "Express lanes on top of the existing highway",
-          "A traffic light system",
-          "A carpool lane",
-        ],
-        answer: "Express lanes on top of the existing highway",
-      },
-    ],
+    content: ComingSoon,
   },
   {
     id: "3",
     title: "Navigating Base's Ecosystem",
     description:
       "Discover the foundations of Base and its relationship with Ethereum.",
-    content: BaseOrigins,
-    quiz: [
-      {
-        question: "What problem do Layer 2 solutions address?",
-        options: [
-          "Lack of decentralization",
-          "Poor security",
-          "Scalability issues",
-          "Lack of cryptocurrencies",
-        ],
-        answer: "Scalability issues",
-      },
-    ],
+    content: ComingSoon,
   },
   {
     id: "4",
     title: "Base Architecture and Future",
     description:
       "Discover the foundations of Base and its relationship with Ethereum.",
-    content: BaseOrigins,
-    quiz: [
-      {
-        question: "What problem do Layer 2 solutions address?",
-        options: [
-          "Lack of decentralization",
-          "Poor security",
-          "Scalability issues",
-          "Lack of cryptocurrencies",
-        ],
-        answer: "Scalability issues",
-      },
-    ],
+    content: ComingSoon,
   },
 ];

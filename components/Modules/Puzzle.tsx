@@ -1,12 +1,30 @@
-import React from "react";
+"use client";
+
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { getLevelsForModule } from "@/utils/moduleLevels";
 import { useRouter } from "next/navigation";
 import { Level } from "@/types/levels";
+import { getItem } from "@/utils/localStorage";
+
+type LevelProgress = Record<string, number>;
 
 const Puzzle = ({ moduleId }: { moduleId: string }) => {
   const router = useRouter();
   const { levels, comingSoon } = getLevelsForModule(moduleId);
+  const [levelProgress, setLevelProgress] = useState<LevelProgress>({});
+
+  useEffect(() => {
+    const updateProgress = () => {
+      const moduleProgress = getItem(`moduleProgress_${moduleId}`) || {};
+      setLevelProgress(moduleProgress);
+    };
+
+    updateProgress();
+    // Set up an interval to check for updates
+    const interval = setInterval(updateProgress, 1000);
+    return () => clearInterval(interval);
+  }, [moduleId]);
 
   const handleLevelClick = (levelId: string) => {
     router.push(`/modules/${moduleId}/level/${levelId}`);
@@ -62,11 +80,11 @@ const Puzzle = ({ moduleId }: { moduleId: string }) => {
                     <div className="w-full bg-gray-700 rounded-full h-2">
                       <div
                         className="bg-white h-2 rounded-full"
-                        style={{ width: "40%" }}
+                        style={{ width: `${levelProgress[level.id] || 0}%` }}
                       ></div>
                     </div>
                     <div className="mt-1 text-sm text-gray-300">
-                      40% Completed
+                      {levelProgress[level.id] || 0}% Completed
                     </div>
                   </div>
                 </div>

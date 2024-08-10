@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { getLevelsForModule } from "@/utils/moduleLevels";
 import Button from "../UI/Button/Button";
 import { Level, ModuleLevels } from "@/types/levels";
 import LevelContentHeader from "./level-content-header";
+import { setItem, getItem } from "@/utils/localStorage";
 
 const LevelContent = ({
   moduleId,
@@ -16,6 +17,37 @@ const LevelContent = ({
   const { levels } = getLevelsForModule(moduleId) as ModuleLevels;
   const level = levels.find((l: Level) => l.id === levelId);
   const [currentStep, setCurrentStep] = useState(0);
+  const [progress, setProgress] = useState(0);
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    if (!isLoaded) {
+      const savedProgress = getItem(`progress_${moduleId}_${levelId}`);
+      if (savedProgress) {
+        setCurrentStep(savedProgress.currentStep);
+        setProgress(savedProgress.progress);
+      }
+      setIsLoaded(true);
+    }
+  }, [moduleId, levelId, isLoaded]);
+
+  useEffect(() => {
+    if (level && isLoaded) {
+      const newProgress = Math.round(
+        ((currentStep + 1) / level.content.length) * 100
+      );
+      setProgress(newProgress);
+      setItem(`progress_${moduleId}_${levelId}`, {
+        currentStep,
+        progress: newProgress,
+      });
+
+      // Update module progress
+      const moduleProgress = getItem(`moduleProgress_${moduleId}`) || {};
+      moduleProgress[levelId] = newProgress;
+      setItem(`moduleProgress_${moduleId}`, moduleProgress);
+    }
+  }, [currentStep, level, moduleId, levelId, isLoaded]);
 
   if (!level) {
     return <div>Level not found</div>;
@@ -28,11 +60,15 @@ const LevelContent = ({
 
   const handleContinue = () => {
     if (currentStep < totalSteps - 1) {
-      setCurrentStep(currentStep + 1);
-      // Scroll to top of the content area
+      const newStep = currentStep + 1;
+      setCurrentStep(newStep);
       window.scrollTo(0, 0);
     } else {
-      // Navigate back to the module page when finished
+      // Level completed logic
+      setItem(`progress_${moduleId}_${levelId}`, null);
+      const moduleProgress = getItem(`moduleProgress_${moduleId}`) || {};
+      moduleProgress[levelId] = 100;
+      setItem(`moduleProgress_${moduleId}`, moduleProgress);
       router.push(`/modules/${moduleId}`);
     }
   };
@@ -43,7 +79,8 @@ const LevelContent = ({
         levelTitle={level.title}
         levelDesc={level.description}
         levelId={levelId}
-        module={moduleId}
+        moduleId={moduleId}
+        progress={progress}
       />
       <div className="max-w-4xl mx-auto px-0 py-6 rounded-lg shadow-lg">
         <h2 className="text-2xl font-cg-regular text-gray-100 mb-2">

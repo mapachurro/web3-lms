@@ -1,3 +1,5 @@
+import { updateShells } from "@/utils/updateShells";
+import { usePrivy } from "@privy-io/react-auth";
 import React, { useState } from "react";
 
 const PollOption = ({ text, isSelected, onSelect }: any) => (
@@ -15,16 +17,20 @@ const PollOption = ({ text, isSelected, onSelect }: any) => (
 const Poll = () => {
   const [selectedOption, setSelectedOption] = useState(null);
   const [hasVoted, setHasVoted] = useState(false);
-
   const options = [
     "Absolutely! It's the next big wave",
     "Maybe, but it needs to prove itself",
     "Nah, other L2s will outperform it",
   ];
 
+  const { user } = usePrivy();
+
   const handleVote = (index: any) => {
     if (!hasVoted) {
       setSelectedOption(index);
+      if (user) {
+        updateShells(user?.id, 10);
+      }
       setHasVoted(true);
     }
   };

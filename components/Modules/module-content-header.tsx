@@ -1,25 +1,30 @@
 import { levels } from "@/lib/module1-levels";
 import { ShareIcon } from "@heroicons/react/24/solid";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { getItem } from "@/utils/localStorage";
 
 const ModuleContentHeader = ({ moduleData, moduleId }: any) => {
   const [isCopied, setIsCopied] = useState<boolean>(false);
-  const [completedLevels, setCompletedLevels] = useState<boolean[]>(
-    new Array(levels.length).fill(false)
-  );
+  const [progressPercentage, setProgressPercentage] = useState(0);
 
-  // Calculate progress
-  const completedCount = completedLevels.filter((level) => level).length;
-  const totalLevels = levels.length;
-  const progressPercentage = (completedCount / totalLevels) * 100;
-  const progressDashoffset = 100 - progressPercentage;
+  useEffect(() => {
+    const calculateProgress = () => {
+      const moduleProgress = getItem(`moduleProgress_${moduleId}`) || {};
+      const totalProgress = levels.reduce((acc, level) => {
+        return acc + (moduleProgress[level.id] || 0);
+      }, 0);
+      return Math.round(totalProgress / levels.length);
+    };
+
+    setProgressPercentage(calculateProgress());
+  }, [moduleId]);
 
   const copyToClipboard = (): void => {
     navigator.clipboard
       .writeText(`${process.env.NEXT_PUBLIC_API_BASE_URL}/modules/${moduleId}`)
       .then(() => {
         setIsCopied(true);
-        setTimeout(() => setIsCopied(false), 2000); // reset after 2 seconds
+        setTimeout(() => setIsCopied(false), 2000);
       })
       .catch((err) => {
         console.error("Failed to copy the address: ", err);
@@ -51,35 +56,24 @@ const ModuleContentHeader = ({ moduleData, moduleId }: any) => {
       {/* Circular Progress */}
       <div className="flex flex-col items-end">
         <div className="relative size-24">
-          <svg
-            className="size-full"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            {/* Background Circle  */}
-            <circle
-              cx="12"
-              cy="12"
-              r="10"
+          <svg className="size-full" viewBox="0 0 36 36">
+            <path
+              d="M18 2.0845
+      a 15.9155 15.9155 0 0 1 0 31.831
+      a 15.9155 15.9155 0 0 1 0 -31.831"
               fill="none"
-              className="stroke-current text-gray-200 dark:text-neutral-800"
-              stroke-width="2"
-            ></circle>
-            {/* Progress Circle inside a group with rotation */}
-            <g className="origin-center -rotate-90 transform">
-              <circle
-                cx="12"
-                cy="12"
-                r="10"
-                fill="none"
-                className="stroke-current text-blue-600 dark:text-white"
-                stroke-width="2"
-                stroke-dasharray="100"
-                stroke-dashoffset={progressDashoffset}
-              ></circle>
-            </g>
+              stroke="#444"
+              strokeWidth="2"
+            />
+            <path
+              d="M18 2.0845
+      a 15.9155 15.9155 0 0 1 0 31.831
+      a 15.9155 15.9155 0 0 1 0 -31.831"
+              fill="none"
+              stroke="#fff"
+              strokeWidth="2"
+              strokeDasharray={`${progressPercentage}, 100`}
+            />
           </svg>
           {/* Percentage Text */}
           <div className="absolute top-1/2 start-1/2 transform -translate-y-1/2 -translate-x-1/2">

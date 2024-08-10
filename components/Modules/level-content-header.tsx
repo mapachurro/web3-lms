@@ -7,17 +7,15 @@ const LevelContentHeader = ({
   levelDesc,
   levelId,
   moduleId,
-}: any) => {
+  progress,
+}: {
+  levelTitle: string;
+  levelDesc: string;
+  levelId: string;
+  moduleId: string;
+  progress: number;
+}) => {
   const [isCopied, setIsCopied] = useState<boolean>(false);
-  const [completedLevels, setCompletedLevels] = useState<boolean[]>(
-    new Array(levels.length).fill(false)
-  );
-
-  // Calculate progress
-  const completedCount = completedLevels.filter((level) => level).length;
-  const totalLevels = levels.length;
-  const progressPercentage = (completedCount / totalLevels) * 100;
-  const progressDashoffset = 100 - progressPercentage;
 
   const copyToClipboard = (): void => {
     navigator.clipboard
@@ -56,40 +54,29 @@ const LevelContentHeader = ({
       {/* Circular Progress */}
       <div className="flex flex-col items-end">
         <div className="relative size-24">
-          <svg
-            className="size-full"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            {/* Background Circle  */}
-            <circle
-              cx="12"
-              cy="12"
-              r="10"
+          <svg className="size-full" viewBox="0 0 36 36">
+            <path
+              d="M18 2.0845
+      a 15.9155 15.9155 0 0 1 0 31.831
+      a 15.9155 15.9155 0 0 1 0 -31.831"
               fill="none"
-              className="stroke-current text-gray-200 dark:text-neutral-800"
-              stroke-width="2"
-            ></circle>
-            {/* Progress Circle inside a group with rotation */}
-            <g className="origin-center -rotate-90 transform">
-              <circle
-                cx="12"
-                cy="12"
-                r="10"
-                fill="none"
-                className="stroke-current text-blue-600 dark:text-white"
-                stroke-width="2"
-                stroke-dasharray="100"
-                stroke-dashoffset={progressDashoffset}
-              ></circle>
-            </g>
+              stroke="#444"
+              strokeWidth="2"
+            />
+            <path
+              d="M18 2.0845
+      a 15.9155 15.9155 0 0 1 0 31.831
+      a 15.9155 15.9155 0 0 1 0 -31.831"
+              fill="none"
+              stroke="#fff"
+              strokeWidth="2"
+              strokeDasharray={`${progress}, 100`}
+            />
           </svg>
           {/* Percentage Text */}
           <div className="absolute top-1/2 start-1/2 transform -translate-y-1/2 -translate-x-1/2">
             <span className="text-center text-xl font-cg-regular text-gray-800 dark:text-white">
-              {progressPercentage}%
+              {Math.round(progress)}%
             </span>
           </div>
         </div>
