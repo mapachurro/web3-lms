@@ -1,5 +1,6 @@
 import React from "react";
 import Logo from "@/components/UI/Logo";
+import Link from "next/link";
 
 const navigation = [
   {
@@ -60,6 +61,26 @@ const ModulesFooter = () => {
         <div className="mt-1">
           <p className="text-center text-xs leading-5 text-gray-500">
             <Logo type={"gray"} />
+          </p>
+        </div>
+        <div>
+          <p className="text-gray-400">
+            Have any feedbacks? DM Shrutz on{" "}
+            <Link
+              href="https://warpcast.com/shrutz"
+              target="_blank"
+              className="text-blue-500 underline"
+            >
+              Warpcast
+            </Link>{" "}
+            or{" "}
+            <Link
+              href="https://x.com/shrutipanjwani_"
+              target="_blank"
+              className="text-blue-500 underline"
+            >
+              X
+            </Link>
           </p>
         </div>
         <div className="flex justify-center space-x-6">
