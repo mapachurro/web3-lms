@@ -2,7 +2,6 @@
 
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import LocaleSwitcher from "@/components/UI/LocaleSwitcher";
 import { useTranslations } from "next-intl";
 import {
   Bars3Icon,
@@ -247,9 +246,6 @@ const ModulesNavbar = () => {
               </div>
             </MenuItems>
           </Menu>
-          <div className="flex">
-            <LocaleSwitcher />
-          </div>
         </div>
       </nav>
       <Dialog

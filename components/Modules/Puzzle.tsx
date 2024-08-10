@@ -1,16 +1,23 @@
 import React from "react";
 import Image from "next/image";
 import { getLevelsForModule } from "@/utils/moduleLevels";
+import { useRouter } from "next/navigation";
+import { Level } from "@/types/levels";
 
-const Puzzle = ({ moduleId }: any) => {
+const Puzzle = ({ moduleId }: { moduleId: string }) => {
+  const router = useRouter();
   const { levels, comingSoon } = getLevelsForModule(moduleId);
+
+  const handleLevelClick = (levelId: string) => {
+    router.push(`/modules/${moduleId}/level/${levelId}`);
+  };
 
   // Define positions for each level
   const levelPositions = [
     { top: "24px", left: "24px", questsTop: "390px", questsLeft: "24px" },
     { top: "240px", right: "24px", questsTop: "24px", questsRight: "24px" },
     { top: "510px", left: "24px", questsTop: "800px", questsLeft: "24px" },
-    { top: "710px", right: "24px", questsTop: "500px", questsRight: "36px" },
+    { top: "710px", right: "24px", questsTop: "500px", questsRight: "144px" },
   ];
 
   return (
@@ -30,8 +37,12 @@ const Puzzle = ({ moduleId }: any) => {
           </div>
         ) : (
           <>
-            {levels.map((level, index) => (
-              <div key={level.id} className="relative">
+            {levels.map((level: Level, index: number) => (
+              <div
+                key={level.id}
+                className="relative cursor-pointer"
+                onClick={() => handleLevelClick(level.id)}
+              >
                 <div
                   className="absolute"
                   style={{
@@ -45,9 +56,7 @@ const Puzzle = ({ moduleId }: any) => {
                   </span>
                   <h1 className="mt-2 text-white text-xl">{level.title}</h1>
                   <p className="mt-1 text-gray-400 text-base max-w-xs">
-                    {level.id === "1"
-                      ? level.content.props.children[0].props.children
-                      : "Parturient erat velit tincidunt sapien congue pretium gravida egestas."}
+                    {level.description}
                   </p>
                   <div className="w-full mt-4">
                     <div className="w-full bg-gray-700 rounded-full h-2">
