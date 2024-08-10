@@ -54,19 +54,19 @@ const Quiz = () => {
         <div className="mt-6">
           {selectedAnswer === correctAnswer ? (
             <p className="text-gray-200 text-lg">
-              Gnarly, dude! You're catching on fast! Base indeed combines
-              Ethereum's robust security with the sweet perks of improved
-              scalability and lower transaction fees. It's like getting the best
-              of both worlds – big wave thrills with beginner-friendly
+              Gnarly, dude! You&apos;re catching on fast! Base indeed combines
+              Ethereum&apos;s robust security with the sweet perks of improved
+              scalability and lower transaction fees. It&apos;s like getting the
+              best of both worlds – big wave thrills with beginner-friendly
               conditions!
             </p>
           ) : (
             <p className="text-gray-200 text-lg">
               Wipeout! No worries, even the best surfers miss a wave sometimes.
-              The correct answer is c) Base combines Ethereum's security with
-              improved scalability and lower fees. It's like Ethereum's cool
-              cousin who found a way to throw an awesome beach party without
-              breaking the bank!
+              The correct answer is c) Base combines Ethereum&apos;s security
+              with improved scalability and lower fees. It&apos;s like
+              Ethereum&apos;s cool cousin who found a way to throw an awesome
+              beach party without breaking the bank!
             </p>
           )}
         </div>

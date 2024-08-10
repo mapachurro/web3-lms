@@ -2,7 +2,7 @@
 
 import React from "react";
 import { modules } from "@/lib/modules";
-import Puzzle from "./puzzle";
+import Puzzle from "./Puzzle";
 import ModuleContentHeader from "./module-content-header";
 
 interface ModuleContentProps {

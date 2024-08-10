@@ -13,7 +13,7 @@ const BaseOrigins: Level["content"] = [
         <p className="text-lg">
           Ready to catch some gnarly waves of knowledge?
           <br />
-          Let's paddle out and dive into the world of Base.
+          Let&apos;s paddle out and dive into the world of Base.
         </p>
 
         <h3 className="text-xl mt-4 mb-2">WTF is Base?</h3>
@@ -58,7 +58,7 @@ const BaseOrigins: Level["content"] = [
             daily since the Dencun upgrade.
           </li>
         </ul>
-        <p>Whoa! That's more traffic than a beach on a sunny day!</p>
+        <p>Whoa! That&apos;s more traffic than a beach on a sunny day!</p>
       </div>
     ),
   },
@@ -76,8 +76,9 @@ const BaseOrigins: Level["content"] = [
             gas, more on surfboards (or, you know, actual transactions).
           </li>
           <li className="mb-2">
-            <strong className="text-blue-500">Ethereum security:</strong> It's
-            like having a lifeguard from the big leagues watching over you.
+            <strong className="text-blue-500">Ethereum security:</strong>{" "}
+            It&apos;s like having a lifeguard from the big leagues watching over
+            you.
           </li>
           <li className="mb-2">
             <strong className="text-blue-500">Speed:</strong> Faster than a pro
@@ -85,7 +86,7 @@ const BaseOrigins: Level["content"] = [
           </li>
           <li>
             <strong className="text-blue-500">Diverse Ecosystem:</strong> Over
-            250 DeFi protocols riding the Base wave. It's like an
+            250 DeFi protocols riding the Base wave. It&apos;s like an
             all-you-can-eat buffet for crypto surfers!
           </li>
         </ol>
@@ -97,8 +98,8 @@ const BaseOrigins: Level["content"] = [
     content: (
       <div className="text-gray-200 text-lg">
         <p>
-          Base is Coinbase's brainchild, launched with a mission to get everyone
-          onchain with utmost convenience.
+          Base is Coinbase&apos;s brainchild, launched with a mission to get
+          everyone onchain with utmost convenience.
         </p>
         <p className="mt-4">
           <strong className="text-blue-500">Coinbase:</strong> A
@@ -114,8 +115,9 @@ const BaseOrigins: Level["content"] = [
     content: (
       <div className="text-gray-200 text-lg">
         <p>
-          While Ethereum's like the famous point break everyone knows, Base is
-          your secret spot – same great waves, smaller crowds, cheaper parking.
+          While Ethereum&apos;s like the famous point break everyone knows, Base
+          is your secret spot – same great waves, smaller crowds, cheaper
+          parking.
         </p>
         <p className="mt-2">
           Even legends need upgrades. To leverage the power of Ethereum by
@@ -130,8 +132,8 @@ const BaseOrigins: Level["content"] = [
       <div className="text-gray-200 text-lg">
         <p>
           Base is now the 2nd largest Ethereum L2 network! In May, it generated
-          a whopping $6.1 million in on-chain profit. That's some serious wax on
-          their surfboard!
+          a whopping $6.1 million in on-chain profit. That&apos;s some serious
+          wax on their surfboard!
         </p>
         <div className="mt-4 border border-gray-800 bg-gray-950 p-4 rounded-lg">
           <p className="font-bold">L2 Onchain Profit in May:</p>
@@ -164,9 +166,9 @@ const BaseOrigins: Level["content"] = [
     content: (
       <div className="text-gray-200 text-lg">
         <p>
-          Base isn't just a blockchain, it's a vibe! The{" "}
-          <span className="text-blue-500">"based"</span> culture is all about
-          community, creativity, and catching the best waves.
+          Base isn&apos;t just a blockchain, it&apos;s a vibe! The{" "}
+          <span className="text-blue-500">&quot;based&quot;</span> culture is
+          all about community, creativity, and catching the best waves.
           <br />
           <br />
           From unique NFT markets like Tiny Based Frogs to ruling the SocialFi
@@ -190,12 +192,12 @@ const BaseOrigins: Level["content"] = [
       <div className="text-gray-200 text-lg">
         <p>
           While Base is making a big splash with its growing number of daily
-          transactions (we're talking millions, surfer!), what really sets it
-          apart is how it leverages Ethereum's strength while solving some of
-          its challenges.
+          transactions (we&apos;re talking millions, surfer!), what really sets
+          it apart is how it leverages Ethereum&apos;s strength while solving
+          some of its challenges.
           <br />
-          It's not about replacing Ethereum, but enhancing it – like adding a
-          perfect offshore wind to already great surfing conditions!
+          It&apos;s not about replacing Ethereum, but enhancing it – like adding
+          a perfect offshore wind to already great surfing conditions!
         </p>
       </div>
     ),
@@ -220,14 +222,16 @@ const BaseOrigins: Level["content"] = [
     content: (
       <div className="text-gray-200 text-lg">
         <p>
-          Congratulations, Beach Wanderer! You've completed your first level and
-          earned 20 seashells.
+          Congratulations, Beach Wanderer! You&apos;ve completed your first
+          level and earned 20 seashells.
           <br />
         </p>
-        <p className="mt-2">You're ready to paddle out to deeper waters.</p>
         <p className="mt-2">
-          Next up: "Getting Started with Base" - where we'll show you how to
-          grab your board (wallet) and catch your first Base wave!
+          You&apos;re ready to paddle out to deeper waters.
+        </p>
+        <p className="mt-2">
+          Next up: &quot;Getting Started with Base&quot; - where we&apos;ll show
+          you how to grab your board (wallet) and catch your first Base wave!
         </p>
         <p className="mt-2 text-blue-500">Ready to keep surfing?</p>
       </div>
