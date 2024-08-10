@@ -117,7 +117,7 @@ const ModuleContent: React.FC<ModuleContentProps> = ({ moduleId, levelId }) => {
           </div>
         </div>
       </div>
-      <Puzzle />
+      <Puzzle moduleId={moduleId} />
     </div>
   );
 };
