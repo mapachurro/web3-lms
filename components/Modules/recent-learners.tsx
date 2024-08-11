@@ -1,57 +1,43 @@
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { User } from "@/types/user";
+import { determineUserRole } from "@/utils/userRole";
 
-const activityItems = [
-  {
-    user: {
-      name: "Michael Foster",
-      imageUrl:
-        "https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    },
-    projectName: "Introduction: Meet Base",
-    points: "10",
-  },
-  {
-    user: {
-      name: "Lindsay Walton",
-      imageUrl:
-        "https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    },
-    projectName: "Introduction: Meet Base",
-    points: "10",
-  },
-  {
-    user: {
-      name: "Courtney Henry",
-      imageUrl:
-        "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    },
-    projectName: "Introduction: Meet Base",
-    points: "10",
-  },
-  {
-    user: {
-      name: "Courtney Henry",
-      imageUrl:
-        "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    },
-    projectName: "Introduction: Meet Base",
-    points: "10",
-  },
-  {
-    user: {
-      name: "Michael Foster",
-      imageUrl:
-        "https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    },
-    projectName: "Introduction: Meet Base",
-    points: "10",
-  },
-];
+const RecentLearners: React.FC = () => {
+  const [recentLearners, setRecentLearners] = useState<User[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
-const RecentLearners = () => {
-  const duplicatedItems = [...activityItems, ...activityItems];
+  useEffect(() => {
+    const fetchRecentLearners = async () => {
+      try {
+        const response = await fetch("/api/recentLearners");
+        if (!response.ok) {
+          throw new Error("Failed to fetch recent learners");
+        }
+        const data: User[] = await response.json();
+        setRecentLearners(data);
+        setIsLoading(false);
+      } catch (error) {
+        console.error("Error fetching recent learners:", error);
+        setError("Failed to load recent learners. Please try again later.");
+        setIsLoading(false);
+      }
+    };
+
+    fetchRecentLearners();
+  }, []);
+
+  const duplicatedItems = [...recentLearners, ...recentLearners];
+
+  if (isLoading) {
+    return <div>Loading recent learners...</div>;
+  }
+
+  if (error) {
+    return <div>{error}</div>;
+  }
 
   return (
     <div className="w-96 md:w-full mt-8 relative">
@@ -72,12 +58,12 @@ const RecentLearners = () => {
             <li key={index} className="py-4">
               <div className="flex items-center gap-x-3">
                 <img
-                  src={item.user.imageUrl}
+                  src={item.avatar}
                   alt=""
                   className="h-6 w-6 flex-none rounded-full bg-gray-800"
                 />
                 <h3 className="flex-auto truncate text-base leading-6 text-white">
-                  {item.user.name}
+                  {item.name}
                 </h3>
                 <p className="flex gap-2 items-center text-sm text-gray-50">
                   <Image
@@ -88,12 +74,14 @@ const RecentLearners = () => {
                     className="h-4 w-4"
                     unoptimized
                   />
-                  {item.points} Shells
+                  {item.shells} Shells
                 </p>
               </div>
               <p className="mt-2 truncate text-sm text-gray-500">
-                Started with{" "}
-                <span className="text-gray-400">{item.projectName}</span>
+                User Level:&nbsp;
+                <span className="text-gray-400">
+                  {determineUserRole(item.category)}
+                </span>
               </p>
             </li>
           ))}

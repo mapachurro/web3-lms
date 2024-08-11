@@ -1,107 +1,66 @@
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { usePrivy } from "@privy-io/react-auth";
+import { User } from "@/types/user";
 
 const tabs = [
-  { name: "Last week", href: "#", current: true },
-  { name: "All time", href: "#", current: false },
+  { name: "Last week", value: "week" },
+  { name: "All time", value: "all" },
 ];
 
-function classNames(...classes: any[]) {
+function classNames(...classes: string[]): string {
   return classes.filter(Boolean).join(" ");
 }
 
-const activityItems = [
-  {
-    rank: "1",
-    user: {
-      name: "Michael Foster",
-      imageUrl:
-        "https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    },
-    points: "10",
-    streak: "28",
-    score: "62",
-  },
-  {
-    rank: "2",
-    user: {
-      name: "Lindsay Walton",
-      imageUrl:
-        "https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    },
-    points: "10",
-    streak: "28",
-    score: "62",
-  },
-  {
-    rank: "3",
-    user: {
-      name: "Courtney Henry",
-      imageUrl:
-        "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    },
-    points: "10",
-    streak: "28",
-    score: "62",
-  },
-  {
-    rank: "4",
-    user: {
-      name: "Courtney Henry",
-      imageUrl:
-        "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    },
-    points: "10",
-    streak: "28",
-    score: "62",
-  },
-  {
-    rank: "5",
-    user: {
-      name: "Michael Foster",
-      imageUrl:
-        "https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    },
-    points: "10",
-    streak: "28",
-    score: "62",
-  },
-  {
-    rank: "6",
-    user: {
-      name: "Courtney Henry",
-      imageUrl:
-        "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    },
-    points: "10",
-    streak: "28",
-    score: "62",
-  },
-  {
-    rank: "7",
-    user: {
-      name: "Michael Foster",
-      imageUrl:
-        "https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    },
-    points: "10",
-    streak: "28",
-    score: "62",
-  },
-  {
-    rank: "8",
-    user: {
-      name: "Whitney Francis",
-      imageUrl:
-        "https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    },
-    points: "10",
-    streak: "28",
-    score: "62",
-  },
-];
+const Leaderboard: React.FC = () => {
+  const [leaderboard, setLeaderboard] = useState<User[]>([]);
+  const [userRanking, setUserRanking] = useState<{
+    rank: number;
+    user: User;
+  } | null>(null);
+  const [selectedTab, setSelectedTab] = useState<string>("week");
+  const { user } = usePrivy();
 
-const Leaderboard = () => {
+  useEffect(() => {
+    const fetchLeaderboardData = async () => {
+      try {
+        const leaderboardResponse = await fetch(
+          `/api/leaderboard?period=${selectedTab}`
+        );
+        if (!leaderboardResponse.ok) {
+          throw new Error("Failed to fetch leaderboard data");
+        }
+        const leaderboardData: User[] = await leaderboardResponse.json();
+
+        // Filter out users with no shells and no streak
+        const filteredLeaderboard = leaderboardData.filter(
+          (user) => user.shells > 0 || user.streakCount > 0
+        );
+        setLeaderboard(filteredLeaderboard);
+
+        if (user?.id) {
+          const userRankingResponse = await fetch(
+            `/api/userRanking?userId=${user.id}&period=${selectedTab}`
+          );
+          if (userRankingResponse.ok) {
+            const userRankingData = await userRankingResponse.json();
+            setUserRanking(userRankingData);
+          }
+        }
+      } catch (error) {
+        console.error("Error fetching leaderboard data:", error);
+      }
+    };
+
+    if (user) {
+      fetchLeaderboardData();
+    }
+  }, [selectedTab, user]);
+
+  const truncateAddress = (address: string) => {
+    return `${address.slice(0, 6)}...${address.slice(-4)}`;
+  };
+
   return (
     <>
       <div className="py-24 px-10">
@@ -110,42 +69,151 @@ const Leaderboard = () => {
           Compete with friends to top the charts
         </p>
         <div className="mt-6">
-          <div className="hidden sm:block">
+          <div className="hidden sm:bloxk">
             <label htmlFor="tabs" className="sr-only">
               Select a tab
             </label>
-            {/* Use an "onChange" listener to redirect the user to the selected tab URL. */}
             <select
               id="tabs"
               name="tabs"
               className="block w-full rounded-full border-gray-300"
-              // defaultValue={tabs.find((tab) => tab.current).name}
+              value={selectedTab}
+              onChange={(e) => setSelectedTab(e.target.value)}
             >
               {tabs.map((tab) => (
-                <option key={tab.name}>{tab.name}</option>
+                <option key={tab.value} value={tab.value}>
+                  {tab.name}
+                </option>
               ))}
             </select>
           </div>
           <div className="block sm:hidden">
             <nav className="flex space-x-4" aria-label="Tabs">
               {tabs.map((tab) => (
-                <a
-                  key={tab.name}
-                  href={tab.href}
+                <button
+                  key={tab.value}
+                  onClick={() => setSelectedTab(tab.value)}
                   className={classNames(
-                    tab.current
+                    tab.value === selectedTab
                       ? "text-[#90afee] bg-[#10336D]"
                       : "text-gray-200 hover:text-gray-300",
                     "rounded-full px-3 py-1 text-sm"
                   )}
-                  aria-current={tab.current ? "page" : undefined}
                 >
                   {tab.name}
-                </a>
+                </button>
               ))}
             </nav>
           </div>
         </div>
+        {userRanking && (
+          <div className="mt-6">
+            <h2 className="text-lg text-white mb-2">Your Ranking</h2>
+            <table className="w-full whitespace-nowrap text-left">
+              <colgroup>
+                <col className="w-1/12" />
+                <col className="w-full sm:w-4/12" />
+                <col className="lg:w-2/12" />
+                <col className="lg:w-1/12" />
+                <col className="lg:w-1/12" />
+              </colgroup>
+              <thead className="border-b border-white/10 text-md leading-6 text-white">
+                <tr>
+                  <th
+                    scope="col"
+                    className="py-2 pl-4 pr-8 font-cg-regular sm:pl-6 lg:pl-8"
+                  >
+                    Rank
+                  </th>
+                  <th
+                    scope="col"
+                    className="py-2 pl-4 pr-8 font-cg-regular sm:pl-6 lg:pl-8"
+                  >
+                    User
+                  </th>
+                  <th
+                    scope="col"
+                    className="py-2 pl-0 pr-8 text-center font-cg-regular sm:pr-8 sm:text-left lg:pr-20"
+                  >
+                    Knowledge Score
+                  </th>
+                  <th
+                    scope="col"
+                    className="py-2 pl-0 pr-4 text-center font-cg-regular sm:pr-8 sm:text-left lg:pr-20"
+                  >
+                    Streak
+                  </th>
+                  <th
+                    scope="col"
+                    className="py-2 pl-0 pr-4 text-center font-cg-regular sm:pr-8 sm:text-left lg:pr-20"
+                  >
+                    Shells
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr className="border-b border-white/5">
+                  <td className="py-4 pl-4 pr-8 sm:pl-6 lg:pl-8">
+                    <p className="text-gray-100">#{userRanking.rank}</p>
+                  </td>
+                  <td className="py-4 pl-4 pr-8 sm:pl-6 lg:pl-8">
+                    <div className="flex items-center gap-x-4">
+                      {userRanking.user.avatar ? (
+                        <Image
+                          src={userRanking.user.avatar}
+                          alt=""
+                          width={32}
+                          height={32}
+                          className="h-8 w-8 rounded-full"
+                        />
+                      ) : (
+                        <div className="h-8 w-8 rounded-full bg-blue-500"></div>
+                      )}
+                      <div className="truncate text-sm font-medium leading-6 text-white">
+                        {userRanking.user.name
+                          ? userRanking.user.name
+                          : userRanking.user.wallet
+                          ? userRanking.user?.wallet?.address
+                          : ""}
+                      </div>
+                    </div>
+                  </td>
+                  <td className="py-4 pl-0 pr-8 text-gray-300">
+                    <div className="flex items-center justify-center sm:justify-start">
+                      {Math.round(userRanking.user.knowledgeScore)}
+                    </div>
+                  </td>
+                  <td className="py-4 pr-8 text-gray-300">
+                    <div className="flex items-center justify-center sm:justify-start">
+                      <Image
+                        src="/images/gm_fire.png"
+                        alt="gm"
+                        width={20}
+                        height={20}
+                        unoptimized
+                        className="w-5 h-5 mr-2"
+                      />
+                      {userRanking.user.streakCount}
+                    </div>
+                  </td>
+                  <td className="py-4 pl-4 pr-8 text-gray-300">
+                    <div className="flex items-center justify-center sm:justify-start">
+                      <Image
+                        src="/images/shell.png"
+                        alt="shell"
+                        width={16}
+                        height={16}
+                        className="h-4 w-4 mr-2"
+                        unoptimized
+                      />
+                      {userRanking.user.shells}
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        )}
         <table className="mt-6 w-full whitespace-nowrap text-left">
           <colgroup>
             <col className="w-1/12" />
@@ -189,40 +257,49 @@ const Leaderboard = () => {
             </tr>
           </thead>
           <tbody className="divide-y divide-white/5">
-            {activityItems.map((item) => (
-              <tr key={item.rank}>
+            {leaderboard.map((item, index) => (
+              <tr key={item.id}>
                 <td className="py-4 pl-4 pr-8 sm:pl-6 lg:pl-8">
-                  {" "}
-                  <p className="text-gray-100">#{item.rank}</p>
+                  <p className="text-gray-100">#{index + 1}</p>
                 </td>
                 <td className="py-4 pl-4 pr-8 sm:pl-6 lg:pl-8">
                   <div className="flex items-center gap-x-4">
-                    <Image
-                      src={item.user.imageUrl}
-                      alt=""
-                      width={100}
-                      height={100}
-                      className="h-8 w-8 rounded-full bg-gray-800"
-                    />
+                    {item.avatar ? (
+                      <Image
+                        src={item.avatar}
+                        alt=""
+                        width={32}
+                        height={32}
+                        className="h-8 w-8 rounded-full"
+                      />
+                    ) : (
+                      <div className="h-8 w-8 rounded-full bg-blue-500"></div>
+                    )}
                     <div className="truncate text-sm font-medium leading-6 text-white">
-                      {item.user.name}
+                      {item.name
+                        ? item.name
+                        : item.wallet
+                        ? item?.wallet?.address
+                        : ""}
                     </div>
                   </div>
                 </td>
                 <td className="py-4 pl-10 pr-8 text-gray-300">
-                  <div className="flex items-center">{item.score}</div>
+                  <div className="flex items-center">
+                    {Math.round(item.knowledgeScore)}
+                  </div>
                 </td>
                 <td className="py-4 pr-8 text-gray-300">
                   <div className="flex items-center">
                     <Image
                       src="/images/gm_fire.png"
                       alt="gm"
-                      width={100}
-                      height={100}
+                      width={20}
+                      height={20}
                       unoptimized
-                      className="w-5 h-5"
+                      className="w-5 h-5 mr-2"
                     />
-                    {item.streak}
+                    {item.streakCount}
                   </div>
                 </td>
                 <td className="py-4 pl-4 pr-8 text-gray-300">
@@ -230,12 +307,12 @@ const Leaderboard = () => {
                     <Image
                       src="/images/shell.png"
                       alt="shell"
-                      width={100}
-                      height={100}
-                      className="h-4 w-4"
+                      width={16}
+                      height={16}
+                      className="h-4 w-4 mr-2"
                       unoptimized
-                    />{" "}
-                    &nbsp;{item.points} Shells
+                    />
+                    {item.shells}
                   </div>
                 </td>
               </tr>
