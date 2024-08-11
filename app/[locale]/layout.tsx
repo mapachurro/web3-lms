@@ -3,28 +3,26 @@ import "./globals.css";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import ClientProvider from "../client";
-import { locales } from "@/lib/locales";
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_API_BASE_URL || ""),
-  title: "Basics",
-  description: "Surf school for base, but cooler",
+  title: "Basics Academy",
+  description:
+    "A vernacular gamified based academy to help people learn, earn & build on the future of crypto. ",
   icons: {
     icon: "/favicon.svg",
   },
   openGraph: {
-    title: "Basics",
-    description: "Surf school for base, but cooler",
+    title: "Basics Academy",
+    description:
+      "A vernacular gamified based academy to help people learn, earn & build on the future of crypto. ",
     url: "/",
-    siteName: "Basics",
+    // images: "/images/preview.png",
+    siteName: "Basics Academy",
     locale: "en_US",
     type: "website",
   },
 };
-
-export function generateStaticParams() {
-  return locales.map((locale) => ({ locale }));
-}
 
 export default async function RootLayout({
   children,
