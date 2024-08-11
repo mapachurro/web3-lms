@@ -252,22 +252,20 @@ export const levels: Level[] = [
   {
     id: "2",
     title: "Getting Started with Base",
-    description:
-      "Discover the foundations of Base and its relationship with Ethereum.",
+    description: "Create a Base wallet and transfer assets crosschain, onchain",
     content: ComingSoon,
   },
   {
     id: "3",
     title: "Navigating Base's Ecosystem",
     description:
-      "Discover the foundations of Base and its relationship with Ethereum.",
+      "Navigate major DEXs, learn about Liquity provision and much more",
     content: ComingSoon,
   },
   {
     id: "4",
     title: "Base Architecture and Future",
-    description:
-      "Discover the foundations of Base and its relationship with Ethereum.",
+    description: "Learn about the tech behind Base and it's potential",
     content: ComingSoon,
   },
 ];

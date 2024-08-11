@@ -7,7 +7,7 @@ import Loading from "@/components/UI/Loading";
 import QuickDive from "./quick-dive";
 import ModulesHeader from "./header";
 import Image from "next/image";
-import Refer from "./refer";
+// import Refer from "./refer";
 
 const ModulesPage = () => {
   const router = useRouter();
@@ -74,7 +74,7 @@ const ModulesPage = () => {
       <div>
         <QuickDive />
         <RecentLearners />
-        <Refer />
+        {/* <Refer /> */}
       </div>
     </div>
   );

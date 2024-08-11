@@ -5,7 +5,7 @@ import Link from "next/link";
 const navigation = [
   {
     name: "Farcaster",
-    href: "#",
+    href: "https://warpcast.com/coinbasics",
     icon: (
       props: React.JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>
     ) => (
@@ -32,7 +32,7 @@ const navigation = [
   },
   {
     name: "X",
-    href: "#",
+    href: "https://x.com/CoinbasicsHQ",
     icon: (
       props: React.JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>
     ) => (
