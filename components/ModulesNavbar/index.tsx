@@ -113,7 +113,7 @@ const ModulesNavbar = () => {
             <Menu as="div" className="relative inline-block text-left">
               <div className="relative flex items-center gap-4">
                 <div className="relative z-10 md:hidden">
-                  <div className="transition-all select-none rounded-lg font-polysans flex items-center justify-center gap-2 text-center group text-sm py-2 text-gray-10 hover:brightness-90 cursor-not-allowed">
+                  <div className="transition-all select-none rounded-lg font-polysans flex items-center justify-center gap-2 text-center group text-sm py-2 text-gray-10 hover:brightness-90">
                     <Image
                       src="/images/shell.png"
                       alt="gm"
@@ -154,12 +154,18 @@ const ModulesNavbar = () => {
                     </span>
                     <span className="inline text-gray-200 font-thin">GM</span>
                   </button>
-                  <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 translate-y-full px-4 py-2 w-64 bg-black border border-grey text-white rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 translate-y-full px-4 py-2 w-[380px] bg-black border border-grey text-white rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <p className="text-md">About Streaks</p>
-                    <p className="text-sm my-1">
-                      Streaks reset every day at 00:00 UTC. Your streak will
-                      break if you don&apos;t gm tomorrow.
-                    </p>
+                    <div className="flex gap-3">
+                      <p className="text-sm my-1 border-r border-gray-600">
+                        Streaks reset every day at 00:00 UTC. Your streak will
+                        break if you don&apos;t gm tomorrow.
+                      </p>
+                      <p className="text-sm my-1">
+                        Shells don&apos;t have any utility right now, but later
+                        you can use it to win various rewards
+                      </p>
+                    </div>
                   </div>
                 </div>
                 <MenuButton>
@@ -277,7 +283,7 @@ const ModulesNavbar = () => {
               <div className="-my-6 divide-y divide-gray-300/10">
                 <div className="flex flex-col space-y-2 py-6">
                   <div className="relative z-10">
-                    <div className="transition-all select-none rounded-lg font-polysans flex items-center gap-1 text-center group text-sm py-2 text-gray-10 hover:brightness-90">
+                    <div className="transition-all select-none rounded-lg font-polysans flex items-center gap-1 text-center group text-sm py-2 text-gray-10 hover:brightness-90 cursor-not-allowed">
                       <Image
                         src="/images/shell.png"
                         alt="gm"
@@ -323,6 +329,10 @@ const ModulesNavbar = () => {
                       <p className="text-sm my-1">
                         Streaks reset every day at 00:00 UTC. Your streak will
                         break if you don&apos;t gm tomorrow.
+                      </p>
+                      <p className="text-sm my-1">
+                        Shells don&apos;t have any utility right now, but later
+                        you can use it to win various rewards
                       </p>
                     </div>
                   </div>
