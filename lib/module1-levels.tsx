@@ -3,7 +3,6 @@ import { Level } from "@/types/levels";
 import Image from "next/image";
 import Link from "next/link";
 import Quiz from "./module1-level1-quiz";
-import SpeedOMeter from "@/components/Modules/speedometer";
 
 const BaseOrigins: Level["content"] = [
   {
@@ -201,10 +200,6 @@ const BaseOrigins: Level["content"] = [
         </p>
       </div>
     ),
-  },
-  {
-    title: "Now, let's see those savings in action!",
-    content: <SpeedOMeter />,
   },
   {
     title: "Whoa!",

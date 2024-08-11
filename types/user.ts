@@ -3,6 +3,7 @@ export interface User {
   name: string;
   bio: string;
   avatar: string;
+  wallet: { address: string };
   socials: Record<string, string>;
   streakCount: number;
   category: string;
