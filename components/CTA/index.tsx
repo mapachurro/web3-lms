@@ -46,10 +46,9 @@ const CTA: React.FC = () => {
         style={{
           background:
             "radial-gradient(382.96% 299.79% at 50% -162.77%, rgba(0, 18, 53, 0) 43.03%, #3F7FFF 84.16%, #FFFFFF 100%)",
-          zIndex: -1,
         }}
       ></div>
-      <div className="relative max-w-4xl mx-auto text-center text-white">
+      <div className="relative z-10 max-w-4xl mx-auto text-center text-white">
         <h2 className="text-6xl font-cg-extrabold mb-4 tracking-tight">
           It&apos;s time to get based
         </h2>

@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     description:
       "Surf School for Base, but cooler. Learn, Discover, and Surf through possibilities on Base while earning juicy rewards.",
     url: "/",
-    // images: "/images/preview.png",
+    images: "/images/preview.png",
     siteName: "Basics",
     locale: "en_US",
     type: "website",

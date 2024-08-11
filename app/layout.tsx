@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     title: "Basics",
     description: "Surf School for Base, but cooler",
     url: "/",
-    // images: "/images/preview.png",
+    images: "/images/preview.png",
     siteName: "Basics",
     locale: "en_US",
     type: "website",
