@@ -51,7 +51,7 @@ const QuickDivePage: React.FC = () => {
       });
       setConversation((prev) => [
         ...prev,
-        { type: "answer", content: result.text },
+        { type: "answer", content: result.answer },
       ]);
     } catch (error) {
       console.error("Error asking question:", error);
