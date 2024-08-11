@@ -3,22 +3,21 @@ import "./globals.css";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import ClientProvider from "../client";
+import { Analytics } from "@vercel/analytics/react";
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_API_BASE_URL || ""),
-  title: "Basics Academy",
-  description:
-    "A vernacular gamified based academy to help people learn, earn & build on the future of crypto. ",
+  title: "Basics",
+  description: "Surf School for Base, but cooler",
   icons: {
     icon: "/favicon.svg",
   },
   openGraph: {
-    title: "Basics Academy",
-    description:
-      "A vernacular gamified based academy to help people learn, earn & build on the future of crypto. ",
+    title: "Basics",
+    description: "Surf School for Base, but cooler",
     url: "/",
     // images: "/images/preview.png",
-    siteName: "Basics Academy",
+    siteName: "Basics",
     locale: "en_US",
     type: "website",
   },
@@ -40,7 +39,10 @@ export default async function RootLayout({
     <html lang={locale} suppressHydrationWarning>
       <body>
         <NextIntlClientProvider locale={locale} messages={messages}>
-          <ClientProvider>{children}</ClientProvider>
+          <ClientProvider>
+            <Analytics />
+            {children}
+          </ClientProvider>
         </NextIntlClientProvider>
       </body>
     </html>
