@@ -8,13 +8,15 @@ import { Analytics } from "@vercel/analytics/react";
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_API_BASE_URL || ""),
   title: "Basics",
-  description: "Surf School for Base, but cooler",
+  description:
+    "Surf School for Base, but cooler. Learn, Discover, and Surf through possibilities on Base while earning juicy rewards",
   icons: {
     icon: "/favicon.svg",
   },
   openGraph: {
     title: "Basics",
-    description: "Surf School for Base, but cooler",
+    description:
+      "Surf School for Base, but cooler. Learn, Discover, and Surf through possibilities on Base while earning juicy rewards.",
     url: "/",
     // images: "/images/preview.png",
     siteName: "Basics",
