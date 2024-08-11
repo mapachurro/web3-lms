@@ -6,7 +6,7 @@ import Button from "@/components/UI/Button/Button";
 import { useTranslations } from "next-intl";
 import { useLogin } from "@privy-io/react-auth";
 import { registerUser } from "@/utils/registerUser";
-// import Image from "next/image";
+import Image from "next/image";
 
 const Header = ({ locale }: any) => {
   const router = useRouter();
@@ -45,7 +45,7 @@ const Header = ({ locale }: any) => {
   return (
     <>
       <div className="relative isolate bg-no-repeat bg-cover bg-center bg-[url('/images/header-bg.svg')] overflow-hidden">
-        <div className="mx-auto max-w-7xl px-6 pt-8 sm:pb-8 lg:px-8 lg:py-8 md:pt-0">
+        <div className="mx-auto max-w-8xl px-6 pt-8 sm:pb-8 lg:px-8 lg:py-8 md:pt-0">
           <div className="pt-10 lg:py-0 lg:pb-0 md:pt-2">
             <header className="text-center relative mx-2 h-[700px] max-h-[700px] min-h-[700px] font-wide font-bold leading-none">
               <div className="z-10 pb-36 mt-10 lg:mt-10 md:mt-10 space-x-8 md:space-x-0">
@@ -75,9 +75,9 @@ const Header = ({ locale }: any) => {
                   </div>
                 </div>
                 {/* <Image
-                  src="/images/header-container.svg"
+                  src="/images/header-container.png"
                   alt="header-container"
-                  className="w-full"
+                  className="w-[95%] mx-auto rounded-2xl"
                   width={100}
                   height={100}
                   unoptimized
