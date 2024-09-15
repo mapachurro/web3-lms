@@ -1,12 +1,10 @@
 {
   "IndexPage": {
-    "header": "Surf school for",
-    "header-half": "but cooler",
-    "header-desc": "Learn, Discover, and Surf through possibilities on Base while earning juicy rewards.",
-    "header-btn": "Get Access",
+    "header": "Learn, Earn, and Surf through",
+    "header-half": "possibilities on",
+    "header-desc": "Your easy guide to all things onchain, one wave at a time.",
+    "header-btn": "Get Started",
     "navbar-btn": "Launch App",
-    "navbar-item1": "Features",
-    "navbar-item2": "Ecosystems",
-    "navbar-item3": "Cohorts"
+    "navbar-item1": "Vision"
   }
 }

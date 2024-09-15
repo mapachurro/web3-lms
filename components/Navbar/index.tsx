@@ -71,17 +71,11 @@ const Navbar = ({ locale }: any) => {
             </div>
           </>
         )}
-        <div className="flex lg:hidden gap-x-10 items-center">
-          <Link href="/" className="text-white">
+        {/* <div className="flex lg:hidden gap-x-10 items-start">
+          <Link href="/" className="text-gray-300">
             {t("navbar-item1")}
           </Link>
-          <Link href="/" className="text-white">
-            {t("navbar-item2")}
-          </Link>
-          <Link href="/" className="text-white">
-            {t("navbar-item3")}
-          </Link>
-        </div>
+        </div> */}
         <div className="md:hidden flex lg:flex-1 lg:justify-end gap-4 items-center">
           {authenticated ? (
             <WhiteButton

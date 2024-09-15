@@ -9,9 +9,9 @@ const Footer: React.FC = () => {
       <div className="mx-auto max-w-7xl px-6 py-12 flex w-full justify-between">
         <div className="w-5/12">
           <Logo type={"blue"} />
-          <p className="mt-4 text-sm text-gray-400">
-            Learn, Discover, and Surf through possibilities on Base while
-            earning juicy rewards.
+          <p className="mt-4 text-sm text-gray-400 max-w-sm">
+            Your easy guide to all things onchain. Learn, earn and surf through
+            possibilites on Base, one wave at a time.
           </p>
         </div>
         <div className="flex flex-col items-end">
