@@ -2,7 +2,101 @@
 
 import Image from "next/image";
 
+interface LogoProps {
+  src: string;
+  alt: string;
+  name: string;
+  gridArea: string;
+  highlight?: boolean;
+}
+
+const Logo: React.FC<LogoProps> = ({
+  src,
+  alt,
+  name,
+  gridArea,
+  highlight = false,
+}) => (
+  <div className={`relative group ${gridArea}`}>
+    <div
+      className={`rounded-xl ${
+        highlight ? "bg-white" : "bg-gray-800"
+      } p-2 shadow-lg transition-all duration-300 group-hover:scale-105 h-full flex items-center justify-center`}
+    >
+      <Image
+        src={src}
+        alt={alt}
+        width={40}
+        height={40}
+        className="w-8 h-8 rounded-full"
+        unoptimized
+      />
+    </div>
+    <div className="absolute -bottom-7 left-1/2 transform -translate-x-1/2 bg-gray-800 px-2 py-1 rounded text-white text-xs opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+      {name}
+    </div>
+  </div>
+);
+
 const Features = () => {
+  const logos: LogoProps[] = [
+    {
+      src: "/images/fc.svg",
+      alt: "Farcaster",
+      name: "Farcaster",
+      gridArea: "col-start-4 row-start-4",
+    },
+    {
+      src: "/images/logos/aerodrome.png",
+      alt: "Aerodrome",
+      name: "Aerodrome",
+      gridArea: "col-start-6 row-start-3",
+    },
+    {
+      src: "/images/logos/base.png",
+      alt: "Base",
+      name: "Base",
+      gridArea: "col-start-7 row-start-1",
+      highlight: true,
+    },
+    {
+      src: "/images/logos/beearly.avif",
+      alt: "Beearly",
+      name: "Beearly",
+      gridArea: "col-start-3 row-start-2",
+    },
+    {
+      src: "/images/logos/talent-protocol.png",
+      alt: "Talent Protocol",
+      name: "Talent Protocol",
+      gridArea: "col-start-11 row-start-3",
+    },
+    {
+      src: "/images/logos/aave.jpg",
+      alt: "Aave",
+      name: "Aave",
+      gridArea: "col-start-8 row-start-3",
+    },
+    {
+      src: "/images/logos/mirror.jpg",
+      alt: "Mirror",
+      name: "Mirror",
+      gridArea: "col-start-9 row-start-2",
+    },
+    {
+      src: "/images/logos/airstack.jpg",
+      alt: "Airstack",
+      name: "Airstack",
+      gridArea: "col-start-1 row-start-3",
+    },
+    {
+      src: "/images/logos/0x.jpg",
+      alt: "0x Protocol",
+      name: "0x Protocol",
+      gridArea: "col-start-9 row-start-4",
+    },
+  ];
+
   return (
     <section className="text-white py-24 px-16 max-w-7xl mx-auto">
       <div className="container mx-auto px-4">
@@ -11,7 +105,7 @@ const Features = () => {
         </h2>
         <div className="flex flex-col gap-y-8">
           {/* 1st row  */}
-          <div className="grid grid-cols-3 lg:gird-cols-1 gap-8">
+          <div className="grid grid-cols-2 lg:gird-cols-1 gap-8">
             <div
               className="border border-[#303640] rounded-lg flex flex-col overflow-hidden"
               style={{
@@ -24,23 +118,22 @@ const Features = () => {
                 </h3>
                 <p className="text-gray-400 font-cg-light text-md flex-grow">
                   Interactive modules and quests tailored to your level and
-                  skills. No matter where you are in your crypto voyage, there's
-                  always new horizons to explore.
+                  skills. No matter where you are in your crypto voyage,
+                  there&apos;s always new horizons to explore.
                 </p>
               </div>
               <div className="">
                 <Image
-                  src="/images/feature_1.png"
+                  src="/images/feature_1.svg"
                   alt="Example questions"
-                  className="w-full scale-110 mb-1"
+                  className="w-full mb-1"
                   width={100}
                   height={100}
-                  unoptimized
                 />
               </div>
             </div>
             <div
-              className="col-span-2 border border-[#303640] rounded-lg flex flex-col"
+              className="border border-[#303640] rounded-lg flex flex-col"
               style={{
                 background: "linear-gradient(180deg, #1B1E23 0%, #12161C 100%)",
               }}
@@ -57,7 +150,7 @@ const Features = () => {
               </div>
 
               <div className="flex flex-col justify-center relative space-y-2 max-w-xs">
-                <div className="w-full absolute -top-2 left-20 bg-[#1E2226] border border-gray-800 rounded-lg p-3 flex items-center space-x-3">
+                <div className="w-full absolute -top-2 left-8 bg-[#1E2226] border border-gray-800 rounded-lg p-3 flex items-center space-x-3">
                   <div className="w-10 h-10 bg-[#36373B] rounded-full flex items-center justify-center"></div>
                   <div className="flex-1">
                     <div className="flex items-center justify-between">
@@ -80,7 +173,7 @@ const Features = () => {
                   </div>
                 </div>
 
-                <div className="w-full absolute left-64 top-6 bg-[#1E2226] border border-gray-800 rounded-lg p-3 flex items-center space-x-3">
+                <div className="w-full absolute left-44 top-6 bg-[#1E2226] border border-gray-800 rounded-lg p-3 flex items-center space-x-3">
                   <div className="w-10 h-10 bg-[#1c1c1c] rounded-md flex items-center justify-center">
                     <Image
                       src="/images/shrutz.png"
@@ -117,7 +210,7 @@ const Features = () => {
           {/* 2nd row  */}
           <div className="grid grid-cols-3 lg:gird-cols-1 gap-8">
             <div
-              className="col-span-2 border border-[#303640] rounded-lg flex flex-col"
+              className="col-span-2 border border-[#303640] rounded-lg flex flex-col overflow-hidden"
               style={{
                 background: "linear-gradient(180deg, #1B1E23 0%, #12161C 100%)",
               }}
@@ -129,9 +222,25 @@ const Features = () => {
                 <p className="text-gray-400 font-cg-light text-md flex-grow">
                   Explore an interactive map of the Base ecosystem. Discover new
                   projects, protocols, and opportunities as you sail through
-                  your learning adventure. You're always early when you're with
-                  Basics.
+                  your learning adventure. You&apos;re always early when
+                  you&apos;re with Basics.
                 </p>
+              </div>
+
+              <div className="relative px-6 pb-0">
+                <div className="absolute inset-0 bg-gradient-to-t from-[#12161C] via-transparent to-transparent pointer-events-none"></div>
+                <div className="grid grid-cols-11 grid-rows-3 gap-2.5 mb-8">
+                  {logos.map((logo, index) => (
+                    <Logo key={index} {...logo} />
+                  ))}
+                  {/* Add empty divs to create the grid effect */}
+                  {[...Array(46)].map((_, index) => (
+                    <div
+                      key={`empty-${index}`}
+                      className="w-full h-12 rounded-xl bg-gray-800/30"
+                    ></div>
+                  ))}
+                </div>
               </div>
             </div>
             <div
@@ -140,12 +249,13 @@ const Features = () => {
                 background: "linear-gradient(180deg, #1B1E23 0%, #12161C 100%)",
               }}
             >
-              <div className="h-48 mt-4 mb-2 relative">
+              <div className="h-48 my-10 relative">
                 <Image
                   src="/images/feature_4.png"
                   alt="feature 4"
                   layout="fill"
                   objectFit="cover"
+                  className="scale-125"
                   unoptimized
                 />
               </div>
@@ -186,20 +296,27 @@ const Features = () => {
               </div>
             </div>
             <div
-              className="col-span-2 border border-[#303640] rounded-lg flex flex-col"
+              className="col-span-2 border border-[#303640] rounded-lg flex flex-col overflow-hidden"
               style={{
                 background: "linear-gradient(180deg, #1B1E23 0%, #12161C 100%)",
               }}
             >
               <div className="pt-8 pb-6 px-6">
-                <h3 className="text-xl font-semibold mb-2">
-                  Beach Shack Profile
-                </h3>
+                <h3 className="text-xl font-semibold mb-2">Onchain profile</h3>
                 <p className="text-gray-400 font-cg-light text-md flex-grow">
-                  Create your unique Beach Shack profile with a public URL.
-                  Showcase your achievements, badges, and expertise to the
-                  world.
+                  Your unique profile that you can share and Showcase your
+                  achievements, badges, and expertise to the world.
                 </p>
+              </div>
+              <div className="h-48 mb-8 relative">
+                <Image
+                  src="/images/profile.jpg"
+                  alt="feature 6"
+                  width={100}
+                  height={100}
+                  className="w-[90%] mx-auto rounded-xl border border-gray-800"
+                  unoptimized
+                />
               </div>
             </div>
           </div>
