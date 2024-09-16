@@ -15,7 +15,7 @@ export const navigation = {
   social: [
     {
       name: "Farcaster",
-      href: "https://warpcast.com/coinbasics",
+      href: "https://warpcast.com/basics",
       icon: (props: React.SVGProps<SVGSVGElement>) => (
         <svg
           xmlns="http://www.w3.org/2000/svg"
