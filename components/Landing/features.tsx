@@ -21,14 +21,14 @@ const Logo: React.FC<LogoProps> = ({
     <div
       className={`rounded-xl ${
         highlight ? "bg-white" : "bg-gray-800"
-      } p-2 shadow-lg transition-all duration-300 group-hover:scale-105 h-full flex items-center justify-center`}
+      } p-2 md:p-1 shadow-lg transition-all duration-300 group-hover:scale-105 h-full flex items-center justify-center`}
     >
       <Image
         src={src}
         alt={alt}
         width={40}
         height={40}
-        className="w-8 h-8 rounded-full"
+        className="w-8 h-8 md:h-full rounded-full md:object-contain"
         unoptimized
       />
     </div>
@@ -98,14 +98,14 @@ const Features = () => {
   ];
 
   return (
-    <section className="text-white py-24 px-16 max-w-7xl mx-auto">
+    <section className="text-white py-24 px-16 md:px-2 max-w-7xl mx-auto">
       <div className="container mx-auto px-4">
         <h2 className="text-4xl font-cg-bold text-center mb-12 max-w-md mx-auto">
           Making onchain feel less esoteric, simpler and fun
         </h2>
         <div className="flex flex-col gap-y-8">
           {/* 1st row  */}
-          <div className="grid grid-cols-2 lg:gird-cols-1 gap-8">
+          <div className="grid grid-cols-2 lg:grid-cols-1 gap-8">
             <div
               className="border border-[#303640] rounded-lg flex flex-col overflow-hidden"
               style={{
@@ -133,7 +133,7 @@ const Features = () => {
               </div>
             </div>
             <div
-              className="border border-[#303640] rounded-lg flex flex-col"
+              className="border border-[#303640] rounded-lg flex flex-col lg:h-[280px] sm:h-[350px]"
               style={{
                 background: "linear-gradient(180deg, #1B1E23 0%, #12161C 100%)",
               }}
@@ -149,7 +149,7 @@ const Features = () => {
                 </p>
               </div>
 
-              <div className="flex flex-col justify-center relative space-y-2 max-w-xs">
+              <div className="flex flex-col justify-center relative space-y-2 max-w-[16rem]">
                 <div className="w-full absolute -top-2 left-8 bg-[#1E2226] border border-gray-800 rounded-lg p-3 flex items-center space-x-3">
                   <div className="w-10 h-10 bg-[#36373B] rounded-full flex items-center justify-center"></div>
                   <div className="flex-1">
@@ -173,7 +173,7 @@ const Features = () => {
                   </div>
                 </div>
 
-                <div className="w-full absolute left-44 top-6 bg-[#1E2226] border border-gray-800 rounded-lg p-3 flex items-center space-x-3">
+                <div className="w-full absolute left-44 sm:left-8 sm:top-16 top-6 bg-[#1E2226] border border-gray-800 rounded-lg p-3 flex items-center space-x-3">
                   <div className="w-10 h-10 bg-[#1c1c1c] rounded-md flex items-center justify-center">
                     <Image
                       src="/images/shrutz.png"
@@ -208,7 +208,7 @@ const Features = () => {
             </div>
           </div>
           {/* 2nd row  */}
-          <div className="grid grid-cols-3 lg:gird-cols-1 gap-8">
+          <div className="grid grid-cols-3 lg:grid-cols-1 gap-8 lg:gap-x-0">
             <div
               className="col-span-2 border border-[#303640] rounded-lg flex flex-col overflow-hidden"
               style={{
@@ -229,7 +229,7 @@ const Features = () => {
 
               <div className="relative px-6 pb-0">
                 <div className="absolute inset-0 bg-gradient-to-t from-[#12161C] via-transparent to-transparent pointer-events-none"></div>
-                <div className="grid grid-cols-11 grid-rows-3 gap-2.5 mb-8">
+                <div className="grid grid-cols-11 grid-rows-3 sm:grid-cols-1 sm:grid-rows-1 gap-2.5 sm:gap-1 mb-8">
                   {logos.map((logo, index) => (
                     <Logo key={index} {...logo} />
                   ))}
@@ -237,7 +237,7 @@ const Features = () => {
                   {[...Array(46)].map((_, index) => (
                     <div
                       key={`empty-${index}`}
-                      className="w-full h-12 rounded-xl bg-gray-800/30"
+                      className="w-full h-12 md:h-8 rounded-xl bg-gray-800/30"
                     ></div>
                   ))}
                 </div>
@@ -249,13 +249,13 @@ const Features = () => {
                 background: "linear-gradient(180deg, #1B1E23 0%, #12161C 100%)",
               }}
             >
-              <div className="h-48 my-10 relative">
+              <div className="h-48 my-10 lg:my-0 lg:h-64 relative">
                 <Image
                   src="/images/feature_4.png"
                   alt="feature 4"
                   layout="fill"
                   objectFit="cover"
-                  className="scale-125"
+                  className="scale-125 lg:scale-100"
                   unoptimized
                 />
               </div>
@@ -270,20 +270,20 @@ const Features = () => {
             </div>
           </div>
           {/* 3rd row  */}
-          <div className="grid grid-cols-3 lg:gird-cols-1 gap-8">
+          <div className="grid grid-cols-3 lg:grid-cols-1 gap-8 lg:gap-x-0">
             <div
               className="border border-[#303640] rounded-lg flex flex-col"
               style={{
                 background: "linear-gradient(180deg, #1B1E23 0%, #12161C 100%)",
               }}
             >
-              <div className="h-48 mb-4 relative">
+              <div className="h-48 mb-4">
                 <Image
                   src="/images/feature_6.png"
                   alt="feature 6"
                   width={100}
                   height={100}
-                  className="w-full scale-125 mx-auto"
+                  className="w-full scale-125 mx-auto lg:scale-100 lg:w-[60%] sm:w-full"
                   unoptimized
                 />
               </div>

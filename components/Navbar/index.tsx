@@ -2,20 +2,20 @@
 
 import React, { useState } from "react";
 import WhiteButton from "@/components/UI/Button/WhiteButton";
-import Link from "next/link";
+// import Link from "next/link";
 import LocaleSwitcher from "@/components/UI/LocaleSwitcher";
 import { useTranslations } from "next-intl";
 import { useLogin, usePrivy } from "@privy-io/react-auth";
 import { useRouter } from "next/navigation";
 import Logo from "@/components/UI/Logo";
-import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
-import { Dialog } from "@headlessui/react";
+// import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
+// import { Dialog } from "@headlessui/react";
 import { registerUser } from "@/utils/registerUser";
 
 const Navbar = ({ locale }: any) => {
   const t = useTranslations("IndexPage");
 
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  // const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const router = useRouter();
   const { authenticated } = usePrivy();
 
@@ -49,17 +49,17 @@ const Navbar = ({ locale }: any) => {
   });
 
   return (
-    <header className="absolute inset-x-0 top-0 z-10">
+    <header className="absolute inset-x-0 top-0 z-10 max-w-7xl 2xl:max-w-8xl mx-auto">
       <nav
         className="mx-auto flex max-w-[95%] items-center justify-between px-6 py-4"
         aria-label="Global"
       >
-        {mobileMenuOpen ? (
+        {/* {mobileMenuOpen ? (
           ""
-        ) : (
-          <>
-            <Logo type="white" />
-            <div className="hidden lg:flex">
+        ) : ( */}
+        <>
+          <Logo type="white" />
+          {/* <div className="hidden lg:flex">
               <button
                 type="button"
                 className="-m-2.5 inline-flex items-center justify-end rounded-md p-2.5 text-gray-400"
@@ -68,15 +68,15 @@ const Navbar = ({ locale }: any) => {
                 <span className="sr-only">Open main menu</span>
                 <Bars3Icon className="h-6 w-6" aria-hidden="true" />
               </button>
-            </div>
-          </>
-        )}
+            </div> */}
+        </>
+        {/* )} */}
         {/* <div className="flex lg:hidden gap-x-10 items-start">
           <Link href="/" className="text-gray-300">
             {t("navbar-item1")}
           </Link>
         </div> */}
-        <div className="md:hidden flex lg:flex-1 lg:justify-end gap-4 items-center">
+        <div className="flex flex-1 justify-end gap-4 items-center">
           {authenticated ? (
             <WhiteButton
               type="link"
@@ -97,7 +97,7 @@ const Navbar = ({ locale }: any) => {
           <LocaleSwitcher />
         </div>
       </nav>
-      <Dialog
+      {/* <Dialog
         as="div"
         className="hidden lg:flex"
         open={mobileMenuOpen}
@@ -153,7 +153,7 @@ const Navbar = ({ locale }: any) => {
             </div>
           </div>
         </Dialog.Panel>
-      </Dialog>
+      </Dialog> */}
     </header>
   );
 };

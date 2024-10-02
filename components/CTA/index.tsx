@@ -49,10 +49,10 @@ const CTA: React.FC = () => {
         }}
       ></div>
       <div className="relative z-10 max-w-4xl mx-auto text-center text-white">
-        <h2 className="text-6xl font-cg-extrabold mb-4 tracking-tight">
+        <h2 className="text-6xl md:text-4xl font-cg-extrabold mb-4 md:mb-0 tracking-tight">
           It&apos;s time to get based
         </h2>
-        <p className="text-xl mb-6 opacity-80">
+        <p className="text-xl md:text-lg mb-6 opacity-80">
           Unlock the possibilities on base
         </p>
         {authenticated ? (

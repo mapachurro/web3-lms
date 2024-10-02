@@ -26,6 +26,7 @@ const Header = ({ locale }: any) => {
         user,
         "isNewUser: ",
         isNewUser,
+
         wasAlreadyAuthenticated,
         loginMethod,
         linkedAccount
@@ -45,12 +46,12 @@ const Header = ({ locale }: any) => {
   return (
     <>
       <div className="relative isolate bg-no-repeat bg-cover bg-center bg-[url('/images/header-bg.svg')] overflow-hidden">
-        <div className="mx-auto max-w-8xl px-6 pt-6 sm:pb-8 lg:px-8 lg:py-8 md:pt-0">
-          <div className="pt-10 lg:py-0 lg:pb-0 md:pt-2">
-            <header className="text-center relative mx-2 h-[700px] max-h-[700px] min-h-[700px] font-wide font-bold leading-none">
+        <div className="max-w-7xl 2xl:max-w-8xl mx-auto px-6 pt-6 sm:pb-0 lg:px-8 lg:pt-16 md:px-2">
+          <div className="pt-10 lg:py-0 lg:pb-0 sm:pt-2">
+            <header className="text-center relative mx-2 h-[700px] max-h-[700px] min-h-[700px] lg:min-h-[450px] lg:h-[450px] font-wide font-bold leading-none">
               <div className="z-10 pb-36 mt-16 lg:mt-10 md:mt-10 space-x-8 md:space-x-0">
                 <div className="mb-8 max-w-5xl mx-auto">
-                  <h1 className="lg:text-5xl md:text-4xl md:w-[90%] text-6xl text-white font-cg-bold tracking-tighter text-center">
+                  <h1 className="lg:text-5xl md:text-4xl text-6xl text-white font-cg-bold tracking-tighter text-center">
                     <span>{t("header")}</span>
                     <div className="flex flex-wrap justify-center items-baseline gap-2">
                       <span>{t("header-half")}</span>
@@ -66,7 +67,7 @@ const Header = ({ locale }: any) => {
                   <div className="flex mt-8 items-center justify-center gap-4">
                     <Button
                       onClick={() => login()}
-                      additionalStyles="z-10 text-lg py-3 px-6 lg:px-4 sm:px-4 font-polysans"
+                      additionalStyles="z-10 text-lg py-3 px-6 lg:px-4 md:px-8 font-polysans"
                     >
                       <div className="flex items-center gap-2">
                         <span>{t("header-btn")} </span>
@@ -78,7 +79,7 @@ const Header = ({ locale }: any) => {
                 <Image
                   src="/images/header-container.svg"
                   alt="header-container"
-                  className="w-[95%] mx-auto rounded-2xl"
+                  className="w-[95%] md:w-full mx-auto rounded-2xl"
                   width={100}
                   height={100}
                   unoptimized

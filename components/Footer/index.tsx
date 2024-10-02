@@ -5,9 +5,9 @@ import Image from "next/image";
 
 const Footer: React.FC = () => {
   return (
-    <footer className="text-white w-full px-8">
+    <footer className="text-white w-full px-8 md:px-2 max-w-7xl 2xl:max-w-8xl mx-auto">
       <div className="mx-auto max-w-7xl px-6 py-12 flex w-full justify-between">
-        <div className="w-5/12">
+        <div className="w-5/12 md:w-full">
           <Logo type={"blue"} />
           <p className="mt-4 text-sm text-gray-400 max-w-sm">
             Your easy guide to all things onchain. Learn, earn and surf through
