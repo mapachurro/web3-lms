@@ -1,0 +1,330 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    background-color: #0e1016;
+    overscroll-behavior: none;
+    overflow-x: hidden;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+::-moz-selection {
+  background-color: #527ffe;
+  color: #fff;
+}
+
+::selection {
+  color: #fff;
+  background-color: #527ffe;
+}
+
+input:-webkit-autofill {
+  filter: none;
+  -webkit-background-clip: text !important;
+  -webkit-box-shadow: 0 0 0px 1000px #101010 inset;
+  -webkit-text-fill-color: rgba(255, 255, 255, 255);
+  border-radius: 20px;
+}
+
+@font-face {
+  font-family: "PolySans Neutral";
+  src: url("/fonts/PolySans-Neutral.woff") format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "CabinetGrotesk Black";
+  src: url("/fonts/CabinetGrotesk-Black.woff") format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "CabinetGrotesk Bold";
+  src: url("/fonts/CabinetGrotesk-Bold.woff") format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "CabinetGrotesk ExtraBold";
+  src: url("/fonts/CabinetGrotesk-Extrabold.woff") format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "CabinetGrotesk Medium";
+  src: url("/fonts/CCabinetGrotesk-Medium.woff") format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "CabinetGrotesk Variable";
+  src: url("/fonts/CabinetGrotesk-Variable.woff") format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "CabinetGrotesk Regular";
+  src: url("/fonts/CabinetGrotesk-Regular.woff") format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "CabinetGrotesk Light";
+  src: url("/fonts/CabinetGrotesk-Light.woff") format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "CabinetGrotesk Thin";
+  src: url("/fonts/CabinetGrotesk-Thin.woff") format("opentype");
+  font-display: swap;
+}
+
+body,
+html {
+  overflow-x: hidden !important;
+  font-family: "PolySans Neutral";
+  background-color: #0e1016;
+}
+
+/* LOADING WAVE  */
+.circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100px;
+  height: 100px;
+  background: #ccc;
+  border: 5px solid #527ffe;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.wave {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: #527ffe;
+  border-radius: 50%;
+  box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.5);
+}
+.wave:before,
+.wave:after {
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -75%);
+}
+.wave:before {
+  border-radius: 45%;
+  background: rgba(0, 0, 0, 1);
+  animation: circle 5s linear infinite;
+}
+.wave:after {
+  border-radius: 40%;
+  background: rgba(0, 0, 0, 0.5);
+  animation: circle 10s linear infinite;
+}
+@keyframes circle {
+  0% {
+    transform: translate(-50%, -75%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -75%) rotate(360deg);
+  }
+}
+
+.marquee-container {
+  overflow: hidden;
+  height: 300px; /* Adjust height as needed */
+  position: relative;
+}
+
+.marquee-content {
+  display: flex;
+  flex-direction: column;
+  animation: marquee 10s linear infinite; /* Adjust duration as needed */
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+.marquee-content::after {
+  content: "";
+  display: block;
+  height: 100%;
+}
+
+.social-button {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  outline: none;
+  width: 40px;
+  height: 40px;
+  text-decoration: none;
+  border-radius: 8px;
+  background: black;
+  text-align: center;
+}
+
+.social-button::after {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 50%;
+  display: block;
+  width: 0;
+  height: 0;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+.social-button:focus,
+.social-button:hover {
+  color: #fff;
+}
+.social-button:focus::after,
+.social-button:hover::after {
+  width: calc(100% + 2px);
+  height: calc(100% + 2px);
+  margin-left: calc(-50% - 1px);
+}
+
+.social-button img {
+  position: relative;
+  z-index: 1;
+  transition: 0.3s;
+}
+
+.social-button {
+  color: #fff;
+}
+.social-button::after {
+  background: linear-gradient(to right, #7e95d4, #0055ff);
+}
+
+/* wave button  */
+.wave-button {
+  position: relative;
+  display: block;
+  text-decoration: none;
+  overflow: hidden;
+}
+
+.wave-button span {
+  position: relative;
+  z-index: 1;
+  color: #fff;
+  letter-spacing: 2px;
+}
+
+.wave-button .liquid {
+  position: absolute;
+  left: 0;
+  background: #527ffe;
+  box-sizing: inset 0 0 50px rgba(0, 0, 0, 0.5);
+  transition: 0.5s;
+}
+
+.wave-button .liquid::before,
+.wave-button .liquid::after {
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -75%);
+}
+
+.wave-button .liquid::before {
+  border-radius: 45%;
+  background: rgba(20, 20, 20, 1);
+  animation: wave 5s linear infinite;
+}
+
+.wave-button .liquid::after {
+  border-radius: 40%;
+  background: rgba(20, 20, 20, 0.5);
+  animation: wave 10s linear infinite;
+}
+
+@keyframes wave {
+  0% {
+    transform: translate(-50%, -75%), rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -75%), rotate(360deg);
+  }
+}
+
+/* waves in word  */
+.relative {
+  position: relative;
+}
+
+.base-text-outline,
+.base-text-fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.base-text-outline {
+  /* color: #0055ff; */
+  /* -webkit-text-stroke: 2px #1560f4; */
+  position: relative;
+  background: linear-gradient(to top, #90b5ff -9%, #0055ff 99.38%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-stroke: 2px transparent;
+}
+
+.base-text-fill {
+  color: #89adf5;
+  animation: word 4s ease-in-out infinite;
+}
+
+@keyframes word {
+  0%,
+  100% {
+    clip-path: polygon(
+      0% 45%,
+      16% 44%,
+      33% 50%,
+      54% 60%,
+      70% 61%,
+      84% 59%,
+      100% 52%,
+      100% 100%,
+      0% 100%
+    );
+  }
+  50% {
+    clip-path: polygon(
+      0% 60%,
+      15% 65%,
+      34% 66%,
+      51% 62%,
+      67% 50%,
+      84% 45%,
+      100% 46%,
+      100% 100%,
+      0% 100%
+    );
+  }
+}
