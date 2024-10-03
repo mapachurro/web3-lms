@@ -2,8 +2,6 @@
 
 import Header from "@/components/Header";
 import Navbar from "@/components/Navbar";
-import { usePrivy } from "@privy-io/react-auth";
-import Loading from "@/components/UI/Loading";
 import Features from "./features";
 import Footer from "@/components/Footer";
 import CTA from "@/components/CTA";
