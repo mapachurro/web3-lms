@@ -6,7 +6,8 @@ export async function POST(request: Request) {
   try {
     const client = await clientPromise;
     const db = client.db("edtech");
-    const { id, answers, category } = await request.json();
+    const { id, answers, category, knowledgeScore, selectedSurfboard } =
+      await request.json();
 
     if (!id) {
       return NextResponse.json(
@@ -19,6 +20,8 @@ export async function POST(request: Request) {
     const userProfile: PartialUserData = {
       answers,
       category,
+      knowledgeScore,
+      selectedSurfboard,
       shells: 10,
       createdAt: new Date(),
     };

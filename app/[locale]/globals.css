@@ -253,21 +253,21 @@ html {
 .wave-button .liquid::before {
   border-radius: 45%;
   background: rgba(20, 20, 20, 1);
-  animation: wave 5s linear infinite;
+  animation: wave-button 5s linear infinite;
 }
 
 .wave-button .liquid::after {
   border-radius: 40%;
   background: rgba(20, 20, 20, 0.5);
-  animation: wave 10s linear infinite;
+  animation: wave-button 10s linear infinite;
 }
 
-@keyframes wave {
+@keyframes wave-button {
   0% {
-    transform: translate(-50%, -75%), rotate(0deg);
+    transform: translate(-50%, -75%) rotate(0deg);
   }
   100% {
-    transform: translate(-50%, -75%), rotate(360deg);
+    transform: translate(-50%, -75%) rotate(360deg);
   }
 }
 
@@ -326,5 +326,47 @@ html {
       100% 100%,
       0% 100%
     );
+  }
+}
+
+/* surfboard bg effect  */
+.surfboard-container {
+  position: relative;
+  height: 250px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.surfboard-circle {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(79, 106, 179, 0.6) 0%,
+    rgba(82, 127, 254, 0) 70%
+  );
+  animation: pulse 2s ease-in-out infinite alternate;
+}
+
+.surfboard-image {
+  position: relative;
+  z-index: 1;
+  width: 180px;
+  height: 230px;
+  object-fit: contain;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(1.1);
+    opacity: 0.8;
   }
 }

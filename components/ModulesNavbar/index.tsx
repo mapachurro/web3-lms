@@ -23,7 +23,6 @@ import { fetchUserData } from "@/utils/fetchUser";
 import Image from "next/image";
 import { useStreak } from "@/hooks/useStreak";
 import { registerUser } from "@/utils/registerUser";
-import Button from "../UI/Button/Button";
 import WhiteButton from "../UI/Button/WhiteButton";
 
 function classNames(...classes: string[]) {
@@ -86,7 +85,7 @@ const ModulesNavbar = () => {
         await registerUser(user);
       }
 
-      router.push("/modules");
+      router.push("/onboard");
     },
     onError: (error) => {
       console.log(error);

@@ -8,6 +8,7 @@ export interface User {
   streakCount: number;
   category: string;
   knowledgeScore: number;
+  selectedSurfboard: string;
   answers: Record<string, string>;
   shells: number;
   createdAt: Date;

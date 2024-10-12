@@ -1,10 +1,10 @@
 import React from "react";
-import { steps } from "./constants";
 
 const ProgressIndicator: React.FC<{
   currentStep: number;
-}> = ({ currentStep }) => {
-  const progressPercentage = ((currentStep + 1) / steps.length) * 100;
+  totalSteps: number;
+}> = ({ currentStep, totalSteps }) => {
+  const progressPercentage = ((currentStep + 1) / totalSteps) * 100;
 
   return (
     <div className="mb-8">
