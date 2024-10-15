@@ -9,6 +9,7 @@ export interface User {
   category: string;
   knowledgeScore: number;
   selectedSurfboard: string;
+  onboardingCompleted: boolean;
   answers: Record<string, string>;
   shells: number;
   createdAt: Date;

@@ -2,7 +2,6 @@
 
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import { useTranslations } from "next-intl";
 import {
   Bars3Icon,
   MagnifyingGlassIcon,
@@ -32,7 +31,6 @@ function classNames(...classes: string[]) {
 const ModulesNavbar = () => {
   const [userData, setUserData] = useState<any>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const t = useTranslations("IndexPage");
 
   const router = useRouter();
 
@@ -61,7 +59,7 @@ const ModulesNavbar = () => {
   const fullAddress = user?.wallet?.address;
   const truncatedAddress = truncateAddress(fullAddress);
 
-  const { streakCount, buttonDisabled, handleGMClick } = useStreak();
+  const { streakCount, buttonDisabled, handleGMClick, loading } = useStreak();
 
   const { login } = useLogin({
     onComplete: async (
@@ -188,13 +186,9 @@ const ModulesNavbar = () => {
                   <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 translate-y-full px-4 py-2 w-[380px] bg-black border border-grey text-white rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <p className="text-md">About Streaks</p>
                     <div className="flex gap-3">
-                      <p className="text-sm my-1 border-r border-gray-600">
+                      <p className="text-sm my-1">
                         Streaks reset every day at 00:00 UTC. Your streak will
                         break if you don&apos;t gm tomorrow.
-                      </p>
-                      <p className="text-sm my-1">
-                        Shells don&apos;t have any utility right now, but later
-                        you can use it to win various rewards
                       </p>
                     </div>
                   </div>

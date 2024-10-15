@@ -6,8 +6,14 @@ export async function POST(request: Request) {
   try {
     const client = await clientPromise;
     const db = client.db("edtech");
-    const { id, answers, category, knowledgeScore, selectedSurfboard } =
-      await request.json();
+    const {
+      id,
+      answers,
+      category,
+      knowledgeScore,
+      selectedSurfboard,
+      onboardingCompleted,
+    } = await request.json();
 
     if (!id) {
       return NextResponse.json(
@@ -24,6 +30,7 @@ export async function POST(request: Request) {
       selectedSurfboard,
       shells: 10,
       createdAt: new Date(),
+      onboardingCompleted: onboardingCompleted || false,
     };
 
     // Add a flag for total newbies

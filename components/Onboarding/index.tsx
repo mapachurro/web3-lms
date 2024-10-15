@@ -128,6 +128,7 @@ const Onboarding: React.FC = () => {
               category: newCategory,
               knowledgeScore,
               selectedSurfboard: selectedSurfboard?.id,
+              onboardingCompleted: true,
             }),
           }),
           fetch("/api/updateOnboardingStep", {
@@ -136,6 +137,7 @@ const Onboarding: React.FC = () => {
             body: JSON.stringify({
               id: user.id,
               onboardingStep: onboardingSteps.length,
+              onboardingCompleted: true,
             }),
           }),
         ]);

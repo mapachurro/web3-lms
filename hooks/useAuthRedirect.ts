@@ -15,7 +15,7 @@ export const useAuthRedirect = (requiredAuth: boolean) => {
       if (ready) {
         if (requiredAuth && !authenticated) {
           router.replace("/");
-        } else if (authenticated && !requiredAuth) {
+        } else if (authenticated) {
           try {
             const response = await axios.post("/api/checkOnboarding", {
               id: user?.id,
