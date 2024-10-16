@@ -2,8 +2,9 @@
 
 import React from "react";
 import { modules } from "@/lib/modules";
-import Puzzle from "./Puzzle";
 import ModuleContentHeader from "./module-content-header";
+// import SurfMap from "./SurfMap";
+import Puzzle from "./Puzzle";
 
 interface ModuleContentProps {
   moduleId: string;

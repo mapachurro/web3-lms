@@ -32,7 +32,7 @@ const ModuleContentHeader = ({ moduleData, moduleId }: any) => {
   };
 
   return (
-    <div className="flex justify-between items-start max-w-4xl mx-auto">
+    <div className="flex justify-between items-start">
       <div className="flex-grow">
         <div>
           <h1 className="text-3xl font-cg-regular text-gray-100">
