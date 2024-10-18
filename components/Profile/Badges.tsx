@@ -91,9 +91,10 @@ const BadgesSection: React.FC<{ fullAddress: string }> = ({ fullAddress }) => {
                 <Image
                   src={surfboard.imageUrl}
                   alt={`Surfboard #${surfboard.id}`}
-                  width={150}
-                  height={150}
+                  width={60}
+                  height={100}
                   className="mx-auto"
+                  unoptimized
                 />
                 <p className="mt-2 text-gray-200">Surfboard #{surfboard.id}</p>
               </div>
