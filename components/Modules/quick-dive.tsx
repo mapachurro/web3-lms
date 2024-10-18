@@ -21,7 +21,7 @@ const QuickDive = () => {
   };
 
   return (
-    <div className="flex flex-col items-start gap-4 h-[205px] p-4 self-stretch rounded-2xl border border-white/20 bg-[radial-gradient(109.93%_68.05%_at_53.3%_45.37%,rgba(17,22,31,0.20)_49.86%,#3F7FFF_84.16%,#FFF_100%)] relative overflow-hidden">
+    <div className="mt-6 flex flex-col items-start gap-4 h-[205px] p-4 self-stretch rounded-2xl border border-white/20 bg-[radial-gradient(109.93%_68.05%_at_53.3%_45.37%,rgba(17,22,31,0.20)_49.86%,#3F7FFF_84.16%,#FFF_100%)] relative overflow-hidden">
       <h2 className="text-white text-xl font-cg-regular leading-tight">
         Got a crypto question? Take a quick dive into the knowledge pool!
       </h2>

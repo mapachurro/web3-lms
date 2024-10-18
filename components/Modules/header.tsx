@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
-// import { DocumentIcon } from "@heroicons/react/24/solid";
+import { DocumentIcon } from "@heroicons/react/24/solid";
+import Link from "next/link";
 
 const ModulesHeader: React.FC = () => {
   return (
@@ -20,12 +21,15 @@ const ModulesHeader: React.FC = () => {
           </span>
         </h2>
         <p className="text-gray-400">Join the coolest crypto hangout on Base</p>
-        {/* <button className="mt-4 bg-gray-800 text-white px-4 py-2 rounded-md flex items-center">
+        <Link
+          href=""
+          className="w-[200px] mt-4 bg-gray-800 text-white px-4 py-2 rounded-md flex items-center"
+        >
           <span className="mr-2">
             <DocumentIcon className="w-4 h-4 text-gray-400" />
           </span>
           Know the cultural
-        </button> */}
+        </Link>
       </div>
       <div className="relative w-52 h-52">
         <Image

@@ -7,6 +7,7 @@ import RecentLearners from "./recent-learners";
 import QuickDive from "./quick-dive";
 import ModulesHeader from "./header";
 import Image from "next/image";
+import InteractiveMap from "./map";
 // import Refer from "./refer";
 
 const ModulesPage = () => {
@@ -72,8 +73,9 @@ const ModulesPage = () => {
       </div>
       {/* right container  */}
       <div>
-        <QuickDive />
         <RecentLearners />
+        <InteractiveMap />
+        <QuickDive />
         {/* <Refer /> */}
       </div>
     </div>
