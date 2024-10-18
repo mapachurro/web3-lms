@@ -221,7 +221,7 @@ const ProfilePage = () => {
           userRole={userRole}
           combinedScore={combinedScore}
         />
-        <Badges />
+        <Badges fullAddress={fullAddress as string} />
       </div>
     </div>
   );

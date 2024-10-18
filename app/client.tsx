@@ -2,6 +2,7 @@
 
 import React from "react";
 import { PrivyProvider } from "@privy-io/react-auth";
+import { SmartWalletsProvider } from "@privy-io/react-auth/smart-wallets";
 import { base, baseSepolia } from "viem/chains";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { http } from "viem";
@@ -37,6 +38,13 @@ const ClientProvider = ({ children }: any) => {
           theme: "#0e1016",
           accentColor: "#0055FF",
           logo: "/images/logo_white.png",
+          walletList: ["coinbase_wallet"],
+        },
+        externalWallets: {
+          coinbaseWallet: {
+            // Valid connection options include 'eoaOnly' (default), 'smartWalletOnly', or 'all'
+            connectionOptions: "smartWalletOnly",
+          },
         },
         // Create embedded wallets for users who don't have a wallet
         embeddedWallets: {
@@ -47,14 +55,16 @@ const ClientProvider = ({ children }: any) => {
       }}
       // onSuccess={() => handleSuccess(user)}
     >
-      <QueryClientProvider client={queryClient}>
-        <WagmiProvider config={wagmiConfig} reconnectOnMount={false}>
-          <AirstackProvider apiKey={AIRSTACK_API_KEY}>
-            {/* <AuthWrapper>{children}</AuthWrapper> */}
-            {children}
-          </AirstackProvider>
-        </WagmiProvider>
-      </QueryClientProvider>
+      <SmartWalletsProvider>
+        <QueryClientProvider client={queryClient}>
+          <WagmiProvider config={wagmiConfig} reconnectOnMount={false}>
+            <AirstackProvider apiKey={AIRSTACK_API_KEY}>
+              {/* <AuthWrapper>{children}</AuthWrapper> */}
+              {children}
+            </AirstackProvider>
+          </WagmiProvider>
+        </QueryClientProvider>
+      </SmartWalletsProvider>
     </PrivyProvider>
   );
 };

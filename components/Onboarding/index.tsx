@@ -37,6 +37,8 @@ const Onboarding: React.FC = () => {
     null
   );
 
+  const [onboardingCompleted, setOnboardingCompleted] = useState(false);
+
   useEffect(() => {
     if (answers.familiarity) {
       const familiarityLevel = parseInt(answers.familiarity as string);
@@ -77,13 +79,19 @@ const Onboarding: React.FC = () => {
     else if (answers.motivation === "Wanna explore Base") points += 2;
     else if (answers.motivation === "I'm a Pro, bring it on!") points += 3;
 
-    points += parseInt(answers.familiarity as string);
+    if (answers.familiarity) {
+      points += parseInt(answers.familiarity as string);
 
-    // Add points based on skill check answer
-    const skillCheckOptions =
-      skillCheckQuestions[answers.familiarity as string].options;
-    const skillIndex = skillCheckOptions.indexOf(answers.skillCheck as string);
-    points += Math.min(skillIndex + 1, 3); // Max 3 points for skill check
+      // Add points based on skill check answer
+      if (answers.skillCheck) {
+        const skillCheckOptions =
+          skillCheckQuestions[answers.familiarity as string]?.options || [];
+        const skillIndex = skillCheckOptions.indexOf(
+          answers.skillCheck as string
+        );
+        points += Math.min(skillIndex + 1, 3); // Max 3 points for skill check
+      }
+    }
 
     const totalPossiblePoints = 11; // 3 (motivation) + 5 (familiarity) + 3 (skill check)
     return (points / totalPossiblePoints) * 100;
@@ -111,39 +119,28 @@ const Onboarding: React.FC = () => {
         });
       }
     } else {
-      const knowledgeScore = calculateKnowledgeScore();
-      const newCategory = determineUserCategory(knowledgeScore);
-      setFinalCategory(newCategory);
+      if (answers.motivation && answers.familiarity && answers.skillCheck) {
+        const knowledgeScore = calculateKnowledgeScore();
+        const newCategory = determineUserCategory(knowledgeScore);
+        setFinalCategory(newCategory);
 
-      if (user?.id) {
-        await Promise.all([
-          fetch("/api/updateUserOnboarding", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              id: user.id,
-              answers,
-              shells: 10,
-              createdAt: new Date(),
-              category: newCategory,
-              knowledgeScore,
-              selectedSurfboard: selectedSurfboard?.id,
-              onboardingCompleted: true,
+        if (user?.id) {
+          await Promise.all([
+            fetch("/api/updateOnboardingStep", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                id: user.id,
+                onboardingStep: onboardingSteps.length,
+              }),
             }),
-          }),
-          fetch("/api/updateOnboardingStep", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              id: user.id,
-              onboardingStep: onboardingSteps.length,
-              onboardingCompleted: true,
-            }),
-          }),
-        ]);
+          ]);
+        }
+
+        setShowConfirmation(true);
+      } else {
+        console.error("Not all required answers are present");
       }
-
-      setShowConfirmation(true);
     }
   };
 
@@ -159,6 +156,37 @@ const Onboarding: React.FC = () => {
     router.push(`/modules?category=${finalCategory.toLowerCase()}`);
   };
 
+  const handleMintComplete = async () => {
+    if (user?.id) {
+      await Promise.all([
+        fetch("/api/updateUserOnboarding", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            id: user.id,
+            answers,
+            shells: 10,
+            createdAt: new Date(),
+            category: finalCategory,
+            knowledgeScore: calculateKnowledgeScore(),
+            selectedSurfboard: selectedSurfboard?.id,
+            onboardingCompleted: true,
+          }),
+        }),
+        fetch("/api/updateOnboardingStep", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            id: user.id,
+            onboardingStep: onboardingSteps.length,
+            onboardingCompleted: true,
+          }),
+        }),
+      ]);
+    }
+    setOnboardingCompleted(true);
+  };
+
   const renderContent = () => {
     if (showConfirmation) {
       return (
@@ -166,6 +194,7 @@ const Onboarding: React.FC = () => {
           category={finalCategory}
           onStart={handleStartSurfing}
           selectedSurfboard={selectedSurfboard}
+          onMintComplete={handleMintComplete}
         />
       );
     }
@@ -219,6 +248,12 @@ const Onboarding: React.FC = () => {
         return null;
     }
   };
+
+  useEffect(() => {
+    if (authenticated && !isLoading && onboardingCompleted) {
+      router.push(`/modules?category=${finalCategory.toLowerCase()}`);
+    }
+  }, [authenticated, isLoading, onboardingCompleted, finalCategory, router]);
 
   const isStepCompleted = () => {
     const currentStepData = onboardingSteps[currentStep];

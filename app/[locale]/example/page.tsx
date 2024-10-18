@@ -1,18 +1,11 @@
 "use client";
 
-import Image from "next/image";
 import React from "react";
 
-const ExamplePark = () => {
+const ExamplePark: React.FC = () => {
   return (
     <div className="relative isolate bg-no-repeat bg-cover bg-center bg-[url('/images/modules-bg.svg')] overflow-hidden">
-      <Image
-        src="/images/surfParkMap.svg"
-        alt="svg"
-        className="w-full"
-        height={100}
-        width={100}
-      />
+      hello
     </div>
   );
 };

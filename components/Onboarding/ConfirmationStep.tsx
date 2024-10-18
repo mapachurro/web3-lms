@@ -1,20 +1,62 @@
-import React from "react";
+import React, { useState } from "react";
 import { Surfboard, UserCategory } from "@/types/onboarding";
 import { determineUserRole } from "@/utils/userRole";
 import Image from "next/image";
+import { usePrivy, useWallets } from "@privy-io/react-auth";
+import { mintSurfboard } from "@/utils/contract";
+import { ethers } from "ethers";
 
 interface ConfirmationStepProps {
   category: UserCategory;
   onStart: () => void;
   selectedSurfboard: Surfboard | null;
+  onMintComplete: () => void;
 }
 
 const ConfirmationStep: React.FC<ConfirmationStepProps> = ({
   category,
   onStart,
   selectedSurfboard,
+  onMintComplete,
 }) => {
+  const [isMinting, setIsMinting] = useState(false);
+  const [isMinted, setIsMinted] = useState(false);
+  const { login, createWallet } = usePrivy();
+  const { wallets } = useWallets();
+
   if (!selectedSurfboard) return null;
+
+  const handleMint = async () => {
+    setIsMinting(true);
+    try {
+      let wallet = wallets[0]; // Assuming the first wallet is the one we want to use
+      if (!wallet) {
+        await createWallet();
+        await login(); // This might be necessary to refresh the wallets list
+        wallet = wallets[0];
+      }
+
+      if (!wallet) {
+        throw new Error("No wallet available");
+      }
+      const provider = await wallet.getEthereumProvider();
+      const ethersProvider = new ethers.BrowserProvider(provider);
+      const signer = await ethersProvider.getSigner();
+
+      // Mint the NFT
+      const tx = await mintSurfboard(signer, selectedSurfboard.img);
+      await tx.wait();
+
+      setIsMinted(true);
+      onMintComplete();
+    } catch (error) {
+      console.error("Error minting surfboard:", error);
+      alert("Error minting surfboard. Please try again.");
+    } finally {
+      setIsMinting(false);
+    }
+  };
+
   return (
     <div>
       <h2 className="text-xl font-polysans text-gray-300 mb-4">
@@ -74,12 +116,22 @@ const ConfirmationStep: React.FC<ConfirmationStepProps> = ({
           </div>
         </div>
       </div>
-      <button
-        onClick={onStart}
-        className="w-full border border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white p-3 rounded-lg text-center transition-all transform hover:scale-105"
-      >
-        Start Surfing!
-      </button>
+      {!isMinted ? (
+        <button
+          onClick={handleMint}
+          disabled={isMinting}
+          className="w-full border border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white p-3 rounded-lg text-center transition-all transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
+        >
+          {isMinting ? "Minting..." : "Mint Your Surfboard"}
+        </button>
+      ) : (
+        <button
+          onClick={onStart}
+          className="w-full border border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white p-3 rounded-lg text-center transition-all transform hover:scale-105"
+        >
+          Start Surfing!
+        </button>
+      )}
     </div>
   );
 };
