@@ -16,6 +16,19 @@ interface ConfirmationStepProps {
   onMintComplete: () => void;
 }
 
+export function getChain() {
+  const chainId = parseInt(process.env.NEXT_PUBLIC_CHAIN_ID || "84532");
+
+  switch (chainId) {
+    case 84532:
+      return baseSepolia;
+    case 8453:
+      return base;
+    default:
+      throw new Error(`Unsupported chain ID: ${chainId}`);
+  }
+}
+
 const ConfirmationStep: React.FC<ConfirmationStepProps> = ({
   category,
   onStart,
@@ -62,9 +75,12 @@ const ConfirmationStep: React.FC<ConfirmationStepProps> = ({
           args: [client.account.address, tokenURI],
         });
 
+        const chain = getChain();
+        console.log("Using chain:", chain.name);
+
         txHash = await client.sendTransaction({
           account: client.account,
-          chain: baseSepolia,
+          chain: chain,
           to: contractAddress,
           data: txData,
         });
