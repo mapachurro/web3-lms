@@ -248,60 +248,84 @@ export const welcomeLevels: Level[] = [
     description: "WTF is Blockchain? Crypto? Web3?",
     content: [
       {
-        title: "Welcome to Base Camp, surfers!",
+        title: "Welcome surfers!",
         content: (
           <div className="text-gray-200">
-            <p className="text-lg">
-              Ready to catch some gnarly waves of knowledge?
-              <br />
-              Let&apos;s paddle out and dive into the world of Base.
-            </p>
+            <p className="text-lg">Catch Your First Wave</p>
 
-            <h3 className="text-xl mt-4 mb-2">WTF is Base?</h3>
+            <h3 className="text-xl mt-4 mb-2">WTF is Blockchain?</h3>
             <p className="text-lg">
-              Imagine Base as Ethereum&apos;s cool, efficient cousin who knows
-              all the secret surf spots.
+              Think of blockchain like a giant, shared notebook. When you write
+              ✏️ something in it, everyone can see it, and no one can erase it.
             </p>
             <p className="text-lg">
-              Launched in 2023 by the pros at Coinbase, Base is an L2 (Layer 2)
-              solution that rides on top of Ethereum, giving you smoother,
-              faster, and cheaper transactions.
+              It's used to keep track of things like money or who owns what,
+              without needing a central authority to manage it.
             </p>
           </div>
         ),
       },
       {
-        title: "📈 Riding the Growth Tsunami",
+        title: "Blockchain, Crypto, and Web3",
         content: (
-          <div className="text-gray-200 text-lg">
-            <p>
-              Since its launch, Base has been catching some serious air. Check
-              out these gnarly stats:
-            </p>
-            <Image
-              src="/images/module1/base-daily.png"
-              alt="base daily transactions chart"
-              width={100}
-              height={100}
-              className="w-full mt-2"
-              unoptimized
-            />
-            <span className="text-sm text-blue-500">
-              <Link href="https://basescan.org/chart/tx" target="_blank">
-                Source
-              </Link>
-            </span>
+          <div className="text-gray-200">
+            <h3 className="text-xl mt-4 mb-2">How are they different?</h3>
 
-            <ul className="list-disc pl-5 mt-4">
-              <li>
-                Base consistently processing{" "}
-                <span className="text-blue-500">
-                  over 4 million transactions
-                </span>{" "}
-                daily since the Dencun upgrade.
-              </li>
-            </ul>
-            <p>Whoa! That&apos;s more traffic than a beach on a sunny day!</p>
+            <p className="text-lg mb-4">
+              Imagine you're at a beach with three different types of waves.
+              Let's dive in and see how they're different!
+            </p>
+
+            <h4 className="text-lg font-bold mb-2">
+              🌊 Blockchain: The Big Wave
+            </h4>
+            <p className="text-lg mb-4">
+              Blockchain is like the big wave that carries everything. It's the
+              technology that makes the other two possible. Remember our giant
+              shared notebook? That's blockchain!
+            </p>
+          </div>
+        ),
+      },
+      {
+        title: "🏄‍♂️ Cryptocurrency: Riding the Wave",
+        content: (
+          <div className="text-gray-200">
+            <p className="text-lg mb-4">
+              Crypto is like riding the blockchain wave. It's digital money that
+              uses blockchain technology. Bitcoin, for example, is the most
+              famous surfer on this wave. It's exciting because it can change
+              how we handle money - from paying bills to buying coffee!
+            </p>
+          </div>
+        ),
+      },
+      {
+        title: "🏖️ Web3: The Entire Beach Experience",
+        content: (
+          <div className="text-gray-200">
+            <p className="text-lg mb-4">
+              Web3 is like the whole beach experience. It's a vision of a new
+              internet built on blockchain technology. It includes
+              cryptocurrencies, but also things like decentralized apps and
+              digital ownership.
+            </p>
+          </div>
+        ),
+      },
+      {
+        title: "",
+        content: (
+          <div className="text-gray-200">
+            <p className="text-lg italic mt-6">
+              Just as the digital world has transformed how we communicate,
+              watch, learn, and shop, blockchain, crypto, and Web3 are set to
+              revolutionize how we handle money and interact online. It's a
+              whole new world of possibilities!
+            </p>
+            <p className="text-lg mt-2">
+              Let&apos;s go more deeper into the next level!
+            </p>
           </div>
         ),
       },
@@ -317,12 +341,104 @@ export const welcomeLevels: Level[] = [
         title: "Introduction to Crosschain",
         content: (
           <div className="text-gray-200">
-            <p>Blockchain is a distributed ledger technology...</p>
-            {/* More content */}
+            <p className="mb-4">
+              Imagine you're a surfer who loves to ride waves on different
+              beaches. Each beach is like a different blockchain, with its own
+              unique waves (transactions) and surfboards (tokens).
+            </p>
+            <p className="mb-4">
+              Crosschain technology is like having a magical surfboard that lets
+              you ride waves between these different beaches without ever
+              leaving the water!
+            </p>
+            <h3 className="text-xl font-bold mb-2">Why is this important?</h3>
+            <ul className="list-disc pl-6 mb-4">
+              <li>
+                It allows you to use your assets across different blockchains
+              </li>
+              <li>
+                You can take advantage of features unique to each blockchain
+              </li>
+              <li>It helps connect the entire blockchain ecosystem</li>
+            </ul>
           </div>
         ),
       },
-      // More content steps...
+      {
+        title: "Meet Base: The Ultimate Surf Spot",
+        content: (
+          <div className="text-gray-200">
+            <p className="mb-4">
+              Base is like a brand new, cutting-edge surf park built on top of
+              Ethereum's ocean. It's designed to make using blockchain easier,
+              faster, and cheaper for everyone.
+            </p>
+            <h3 className="text-xl font-bold mb-2">What makes Base special?</h3>
+            <ul className="list-disc pl-6 mb-4">
+              <li>
+                It's a Layer 2 solution, meaning it's built on top of Ethereum
+                for improved speed and lower costs
+              </li>
+              <li>
+                It's backed by Coinbase, a major player in the crypto world
+              </li>
+              <li>
+                It aims to make Web3 accessible to everyone, just like a
+                beginner-friendly surf spot
+              </li>
+            </ul>
+            <p className="mb-4">
+              Think of Base as the perfect learning ground for new surfers in
+              the blockchain world!
+            </p>
+          </div>
+        ),
+      },
+      {
+        title: "And guess what?",
+        content: (
+          <div className="text-gray-200 text-lg">
+            <p>
+              Base is now the 2nd largest Ethereum L2 network! In May, it
+              generated a whopping $6.1 million in on-chain profit. That&apos;s
+              some serious wax on their surfboard!
+            </p>
+            <div className="mt-4 border border-gray-800 bg-gray-950 p-4 rounded-lg">
+              <p className="font-bold">L2 Onchain Profit in May:</p>
+              <ol className="list-decimal pl-5 mt-2">
+                <li>Base - $6.98M</li>
+                <li>Optimism - $1.57M</li>
+                <li>Scroll - $1.35M</li>
+                <li>Arbitrum - $802k</li>
+                <li>Linea - $612k</li>
+              </ol>
+              <p className="mt-2 text-sm text-gray-400">
+                Onchain profit = Revenue from L2 gas fees - Costs of posting
+                batches and verifying proofs on L1
+              </p>
+            </div>
+            <p className="mt-4 text-sm text-blue-500">
+              <Link
+                href="https://twitter.com/0xKofi/status/1797645289307951127"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                View original tweet by @0xKofi
+              </Link>
+            </p>
+          </div>
+        ),
+      },
+      {
+        title: "WTF are these Layers in a blockchain",
+        content: (
+          <div className="text-gray-200">
+            <p className="text-lg mt-2">
+              Let&apos;s go more deeper into the next level!
+            </p>
+          </div>
+        ),
+      },
     ],
     shells: 10,
   },
@@ -332,13 +448,8 @@ export const welcomeLevels: Level[] = [
     description: "Layers Explained. L1? L2? even L3? Oh my god!",
     content: [
       {
-        title: "Introduction to Layers",
-        content: (
-          <div className="text-gray-200">
-            <p>Blockchain is a distributed ledger technology...</p>
-            {/* More content */}
-          </div>
-        ),
+        title: "Coming Soon",
+        content: <div className="text-gray-200"></div>,
       },
       // More content steps...
     ],
@@ -353,13 +464,8 @@ export const nftLevels: Level[] = [
     description: "Intro to NFTs vs. Fungible Tokens",
     content: [
       {
-        title: "Introduction to Blockchain",
-        content: (
-          <div className="text-gray-200">
-            <p>Blockchain is a distributed ledger technology...</p>
-            {/* More content */}
-          </div>
-        ),
+        title: "Coming Soon",
+        content: <div className="text-gray-200"></div>,
       },
       // More content steps...
     ],
@@ -371,13 +477,8 @@ export const nftLevels: Level[] = [
     description: "What is Minting NFTs",
     content: [
       {
-        title: "Introduction to Crosschain",
-        content: (
-          <div className="text-gray-200">
-            <p>Blockchain is a distributed ledger technology...</p>
-            {/* More content */}
-          </div>
-        ),
+        title: "Coming Soon",
+        content: <div className="text-gray-200"></div>,
       },
       // More content steps...
     ],
@@ -389,13 +490,8 @@ export const nftLevels: Level[] = [
     description: "NFT Marketplaces and Floors",
     content: [
       {
-        title: "Introduction to Layers",
-        content: (
-          <div className="text-gray-200">
-            <p>Blockchain is a distributed ledger technology...</p>
-            {/* More content */}
-          </div>
-        ),
+        title: "Coming Soon",
+        content: <div className="text-gray-200"></div>,
       },
       // More content steps...
     ],
@@ -410,13 +506,8 @@ export const defiLevels: Level[] = [
     description: "Intro to DeFi",
     content: [
       {
-        title: "Introduction to Blockchain",
-        content: (
-          <div className="text-gray-200">
-            <p>Blockchain is a distributed ledger technology...</p>
-            {/* More content */}
-          </div>
-        ),
+        title: "Coming Soon",
+        content: <div className="text-gray-200"></div>,
       },
       // More content steps...
     ],
@@ -428,13 +519,8 @@ export const defiLevels: Level[] = [
     description: "Liquidity Pools",
     content: [
       {
-        title: "Introduction to Crosschain",
-        content: (
-          <div className="text-gray-200">
-            <p>Blockchain is a distributed ledger technology...</p>
-            {/* More content */}
-          </div>
-        ),
+        title: "Coming Soon",
+        content: <div className="text-gray-200"></div>,
       },
       // More content steps...
     ],
@@ -446,13 +532,8 @@ export const defiLevels: Level[] = [
     description: "What is Yield Farming",
     content: [
       {
-        title: "Introduction to Layers",
-        content: (
-          <div className="text-gray-200">
-            <p>Blockchain is a distributed ledger technology...</p>
-            {/* More content */}
-          </div>
-        ),
+        title: "Coming Soon",
+        content: <div className="text-gray-200"></div>,
       },
       // More content steps...
     ],
@@ -467,13 +548,8 @@ export const devLevels: Level[] = [
     description: "What are Smart Contracts?",
     content: [
       {
-        title: "Introduction to Blockchain",
-        content: (
-          <div className="text-gray-200">
-            <p>Blockchain is a distributed ledger technology...</p>
-            {/* More content */}
-          </div>
-        ),
+        title: "Coming Soon",
+        content: <div className="text-gray-200"></div>,
       },
       // More content steps...
     ],
@@ -485,13 +561,8 @@ export const devLevels: Level[] = [
     description: "What are DApps and how to develop them",
     content: [
       {
-        title: "Introduction to Crosschain",
-        content: (
-          <div className="text-gray-200">
-            <p>Blockchain is a distributed ledger technology...</p>
-            {/* More content */}
-          </div>
-        ),
+        title: "Coming Soon",
+        content: <div className="text-gray-200"></div>,
       },
       // More content steps...
     ],
@@ -503,8 +574,8 @@ export const devLevels: Level[] = [
     description: "Blockchain Protocols",
     content: [
       {
-        title: "Coming soon",
-        content: <div className="text-gray-200">{/* More content */}</div>,
+        title: "Coming Soon",
+        content: <div className="text-gray-200"></div>,
       },
       // More content steps...
     ],
@@ -519,13 +590,8 @@ export const daoLevels: Level[] = [
     description: "Intro to DAOs",
     content: [
       {
-        title: "Introduction to Blockchain",
-        content: (
-          <div className="text-gray-200">
-            <p>Blockchain is a distributed ledger technology...</p>
-            {/* More content */}
-          </div>
-        ),
+        title: "Coming Soon",
+        content: <div className="text-gray-200"></div>,
       },
       // More content steps...
     ],
@@ -537,13 +603,8 @@ export const daoLevels: Level[] = [
     description: "Governance Tokens",
     content: [
       {
-        title: "Introduction to Crosschain",
-        content: (
-          <div className="text-gray-200">
-            <p>Blockchain is a distributed ledger technology...</p>
-            {/* More content */}
-          </div>
-        ),
+        title: "Coming Soon",
+        content: <div className="text-gray-200"></div>,
       },
       // More content steps...
     ],
@@ -555,13 +616,8 @@ export const daoLevels: Level[] = [
     description: "Proposal Systems",
     content: [
       {
-        title: "Introduction to Layers",
-        content: (
-          <div className="text-gray-200">
-            <p>Blockchain is a distributed ledger technology...</p>
-            {/* More content */}
-          </div>
-        ),
+        title: "Coming Soon",
+        content: <div className="text-gray-200"></div>,
       },
       // More content steps...
     ],
@@ -576,13 +632,8 @@ export const socialLevels: Level[] = [
     description: "Web3 Social Platforms",
     content: [
       {
-        title: "Introduction to Blockchain",
-        content: (
-          <div className="text-gray-200">
-            <p>Blockchain is a distributed ledger technology...</p>
-            {/* More content */}
-          </div>
-        ),
+        title: "Coming Soon",
+        content: <div className="text-gray-200"></div>,
       },
       // More content steps...
     ],
@@ -594,13 +645,8 @@ export const socialLevels: Level[] = [
     description: "Decentralized Identities",
     content: [
       {
-        title: "Introduction to Crosschain",
-        content: (
-          <div className="text-gray-200">
-            <p>Blockchain is a distributed ledger technology...</p>
-            {/* More content */}
-          </div>
-        ),
+        title: "Coming Soon",
+        content: <div className="text-gray-200"></div>,
       },
       // More content steps...
     ],
@@ -612,13 +658,8 @@ export const socialLevels: Level[] = [
     description: "Token-Gated Communities",
     content: [
       {
-        title: "Introduction to Layers",
-        content: (
-          <div className="text-gray-200">
-            <p>Blockchain is a distributed ledger technology...</p>
-            {/* More content */}
-          </div>
-        ),
+        title: "Coming Soon",
+        content: <div className="text-gray-200"></div>,
       },
       // More content steps...
     ],
@@ -633,13 +674,8 @@ export const metaverseLevels: Level[] = [
     description: "Intro to Metaverse",
     content: [
       {
-        title: "Introduction to Blockchain",
-        content: (
-          <div className="text-gray-200">
-            <p>Blockchain is a distributed ledger technology...</p>
-            {/* More content */}
-          </div>
-        ),
+        title: "Coming Soon",
+        content: <div className="text-gray-200"></div>,
       },
       // More content steps...
     ],
@@ -651,13 +687,8 @@ export const metaverseLevels: Level[] = [
     description: "Virtual Real Estate",
     content: [
       {
-        title: "Introduction to Crosschain",
-        content: (
-          <div className="text-gray-200">
-            <p>Blockchain is a distributed ledger technology...</p>
-            {/* More content */}
-          </div>
-        ),
+        title: "Coming Soon",
+        content: <div className="text-gray-200"></div>,
       },
       // More content steps...
     ],
@@ -669,13 +700,8 @@ export const metaverseLevels: Level[] = [
     description: "Interoperability",
     content: [
       {
-        title: "Introduction to Layers",
-        content: (
-          <div className="text-gray-200">
-            <p>Blockchain is a distributed ledger technology...</p>
-            {/* More content */}
-          </div>
-        ),
+        title: "Coming Soon",
+        content: <div className="text-gray-200"></div>,
       },
       // More content steps...
     ],
@@ -690,13 +716,8 @@ export const walletLevels: Level[] = [
     description: "Wallets and Security",
     content: [
       {
-        title: "Introduction to Blockchain",
-        content: (
-          <div className="text-gray-200">
-            <p>Blockchain is a distributed ledger technology...</p>
-            {/* More content */}
-          </div>
-        ),
+        title: "Coming Soon",
+        content: <div className="text-gray-200"></div>,
       },
       // More content steps...
     ],
@@ -708,13 +729,8 @@ export const walletLevels: Level[] = [
     description: "Scam Prevention",
     content: [
       {
-        title: "Introduction to Crosschain",
-        content: (
-          <div className="text-gray-200">
-            <p>Blockchain is a distributed ledger technology...</p>
-            {/* More content */}
-          </div>
-        ),
+        title: "Coming Soon",
+        content: <div className="text-gray-200"></div>,
       },
       // More content steps...
     ],
@@ -726,13 +742,8 @@ export const walletLevels: Level[] = [
     description: "Best Practices",
     content: [
       {
-        title: "Introduction to Layers",
-        content: (
-          <div className="text-gray-200">
-            <p>Blockchain is a distributed ledger technology...</p>
-            {/* More content */}
-          </div>
-        ),
+        title: "Coming Soon",
+        content: <div className="text-gray-200"></div>,
       },
       // More content steps...
     ],
@@ -747,13 +758,8 @@ export const vibesLevels: Level[] = [
     description: "Common Web3 Terms to become cultural",
     content: [
       {
-        title: "Introduction to Blockchain",
-        content: (
-          <div className="text-gray-200">
-            <p>Blockchain is a distributed ledger technology...</p>
-            {/* More content */}
-          </div>
-        ),
+        title: "Coming Soon",
+        content: <div className="text-gray-200"></div>,
       },
       // More content steps...
     ],

@@ -1,4 +1,3 @@
-import { levels } from "@/lib/module1-levels";
 import { ShareIcon } from "@heroicons/react/24/solid";
 import React, { useState } from "react";
 
@@ -8,12 +7,14 @@ const LevelContentHeader = ({
   levelId,
   moduleId,
   progress,
+  isComingSoon,
 }: {
   levelTitle: string;
   levelDesc: string;
   levelId: string;
   moduleId: string;
   progress: number;
+  isComingSoon: boolean;
 }) => {
   const [isCopied, setIsCopied] = useState<boolean>(false);
 
@@ -76,14 +77,16 @@ const LevelContentHeader = ({
           {/* Percentage Text */}
           <div className="absolute top-1/2 start-1/2 transform -translate-y-1/2 -translate-x-1/2">
             <span className="text-center text-xl font-cg-regular text-gray-800 dark:text-white">
-              {Math.round(progress)}%
+              {isComingSoon ? "Soon" : `${Math.round(progress)}%`}
             </span>
           </div>
         </div>
         <div className="text-right mt-2">
           <h1 className="text-gray-200 font-cg-bold text-md">Level Progress</h1>
           <p className="text-gray-400 text-md max-w-[240px]">
-            We&apos;re calculating your progress of the level here
+            {isComingSoon
+              ? "This level is coming soon!"
+              : "We're calculating your progress of the level here"}
           </p>
         </div>
       </div>

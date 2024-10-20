@@ -173,7 +173,7 @@ const SurfMap = ({ moduleId }: { moduleId: string }) => {
 
         <div className="inline-block absolute top-[440px] right-44 uppercase text-2xl">
           <h1 className="text-white text-xl font-bold tracking-wider drop-shadow-[0_0_10px_rgba(255,255,255,0.7)]">
-            Developers' Reef
+            Developers&apos; Reef
           </h1>
         </div>
 
@@ -227,7 +227,7 @@ const SurfMap = ({ moduleId }: { moduleId: string }) => {
 
         <div className="inline-block absolute top-[880px] left-28 uppercase text-2xl">
           <h1 className="text-white text-xl max-w-[100px] text-center font-bold tracking-wider drop-shadow-[0_0_10px_rgba(255,255,255,0.7)]">
-            Surfer's Lagoon
+            Surfer&apos;s Lagoon
           </h1>
         </div>
 

@@ -11,7 +11,17 @@ const ModuleContentHeader = ({ moduleData, moduleId }: any) => {
     const calculateProgress = () => {
       const moduleProgress = getItem(`moduleProgress_${moduleId}`) || {};
       // Get all levels for this module
-      const allLevels = ["welcome", "nft"].flatMap((mapPart) => {
+      const allLevels = [
+        "welcome",
+        "nft",
+        "defi",
+        "dev",
+        "dao",
+        "social",
+        "metaverse",
+        "wallets",
+        "vibes",
+      ].flatMap((mapPart) => {
         const { levels } = getLevelsForModule(moduleId, mapPart);
         return levels;
       });
