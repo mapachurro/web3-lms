@@ -30,6 +30,12 @@ const ConfirmationStep: React.FC<ConfirmationStepProps> = ({
   const { wallets } = useWallets();
   const { client } = useSmartWallets();
 
+  const smartWallet = user?.linkedAccounts.find(
+    (account) => account.type === "smart_wallet"
+  );
+  console.log("smartwallet address", smartWallet?.address);
+  console.log("smartwallet type", smartWallet?.type);
+
   if (!selectedSurfboard) return null;
 
   const handleMint = async () => {
