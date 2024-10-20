@@ -14,4 +14,5 @@ export interface Level {
   description: string;
   content: LevelContent[];
   progress?: string;
+  shells: number;
 }

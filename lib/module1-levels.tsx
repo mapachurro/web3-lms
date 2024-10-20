@@ -241,31 +241,522 @@ export const ComingSoon = [
   },
 ];
 
-export const levels: Level[] = [
+export const welcomeLevels: Level[] = [
   {
     id: "1",
-    title: "Base Origins",
-    description:
-      "Discover the foundations of Base and its relationship with Ethereum.",
-    content: BaseOrigins,
+    title: "Catch Your First Wave",
+    description: "WTF is Blockchain? Crypto? Web3?",
+    content: [
+      {
+        title: "Welcome to Base Camp, surfers!",
+        content: (
+          <div className="text-gray-200">
+            <p className="text-lg">
+              Ready to catch some gnarly waves of knowledge?
+              <br />
+              Let&apos;s paddle out and dive into the world of Base.
+            </p>
+
+            <h3 className="text-xl mt-4 mb-2">WTF is Base?</h3>
+            <p className="text-lg">
+              Imagine Base as Ethereum&apos;s cool, efficient cousin who knows
+              all the secret surf spots.
+            </p>
+            <p className="text-lg">
+              Launched in 2023 by the pros at Coinbase, Base is an L2 (Layer 2)
+              solution that rides on top of Ethereum, giving you smoother,
+              faster, and cheaper transactions.
+            </p>
+          </div>
+        ),
+      },
+      {
+        title: "📈 Riding the Growth Tsunami",
+        content: (
+          <div className="text-gray-200 text-lg">
+            <p>
+              Since its launch, Base has been catching some serious air. Check
+              out these gnarly stats:
+            </p>
+            <Image
+              src="/images/module1/base-daily.png"
+              alt="base daily transactions chart"
+              width={100}
+              height={100}
+              className="w-full mt-2"
+              unoptimized
+            />
+            <span className="text-sm text-blue-500">
+              <Link href="https://basescan.org/chart/tx" target="_blank">
+                Source
+              </Link>
+            </span>
+
+            <ul className="list-disc pl-5 mt-4">
+              <li>
+                Base consistently processing{" "}
+                <span className="text-blue-500">
+                  over 4 million transactions
+                </span>{" "}
+                daily since the Dencun upgrade.
+              </li>
+            </ul>
+            <p>Whoa! That&apos;s more traffic than a beach on a sunny day!</p>
+          </div>
+        ),
+      },
+    ],
+    shells: 10,
   },
   {
     id: "2",
-    title: "Getting Started with Base",
-    description: "Create a Base wallet and transfer assets crosschain, onchain",
-    content: ComingSoon,
+    title: "Surfing Across Shores",
+    description: "Let's go Crosschain",
+    content: [
+      {
+        title: "Introduction to Crosschain",
+        content: (
+          <div className="text-gray-200">
+            <p>Blockchain is a distributed ledger technology...</p>
+            {/* More content */}
+          </div>
+        ),
+      },
+      // More content steps...
+    ],
+    shells: 10,
   },
   {
     id: "3",
-    title: "Navigating Base's Ecosystem",
-    description:
-      "Navigate major DEXs, learn about Liquity provision and much more",
-    content: ComingSoon,
+    title: "Riding the Waves",
+    description: "Layers Explained. L1? L2? even L3? Oh my god!",
+    content: [
+      {
+        title: "Introduction to Layers",
+        content: (
+          <div className="text-gray-200">
+            <p>Blockchain is a distributed ledger technology...</p>
+            {/* More content */}
+          </div>
+        ),
+      },
+      // More content steps...
+    ],
+    shells: 10,
   },
+];
+
+export const nftLevels: Level[] = [
   {
     id: "4",
-    title: "Base Architecture and Future",
-    description: "Learn about the tech behind Base and it's potential",
-    content: ComingSoon,
+    title: "Digital Treasure Hunt",
+    description: "Intro to NFTs vs. Fungible Tokens",
+    content: [
+      {
+        title: "Introduction to Blockchain",
+        content: (
+          <div className="text-gray-200">
+            <p>Blockchain is a distributed ledger technology...</p>
+            {/* More content */}
+          </div>
+        ),
+      },
+      // More content steps...
+    ],
+    shells: 10,
+  },
+  {
+    id: "5",
+    title: "Crafting Your Unique Surfboard",
+    description: "What is Minting NFTs",
+    content: [
+      {
+        title: "Introduction to Crosschain",
+        content: (
+          <div className="text-gray-200">
+            <p>Blockchain is a distributed ledger technology...</p>
+            {/* More content */}
+          </div>
+        ),
+      },
+      // More content steps...
+    ],
+    shells: 10,
+  },
+  {
+    id: "6",
+    title: "Trading Rare Seashells",
+    description: "NFT Marketplaces and Floors",
+    content: [
+      {
+        title: "Introduction to Layers",
+        content: (
+          <div className="text-gray-200">
+            <p>Blockchain is a distributed ledger technology...</p>
+            {/* More content */}
+          </div>
+        ),
+      },
+      // More content steps...
+    ],
+    shells: 10,
+  },
+];
+
+export const defiLevels: Level[] = [
+  {
+    id: "7",
+    title: "Ocean of Opportunities",
+    description: "Intro to DeFi",
+    content: [
+      {
+        title: "Introduction to Blockchain",
+        content: (
+          <div className="text-gray-200">
+            <p>Blockchain is a distributed ledger technology...</p>
+            {/* More content */}
+          </div>
+        ),
+      },
+      // More content steps...
+    ],
+    shells: 10,
+  },
+  {
+    id: "8",
+    title: "Tide Pools of Liquidity",
+    description: "Liquidity Pools",
+    content: [
+      {
+        title: "Introduction to Crosschain",
+        content: (
+          <div className="text-gray-200">
+            <p>Blockchain is a distributed ledger technology...</p>
+            {/* More content */}
+          </div>
+        ),
+      },
+      // More content steps...
+    ],
+    shells: 10,
+  },
+  {
+    id: "9",
+    title: "Catching the Yield Wave",
+    description: "What is Yield Farming",
+    content: [
+      {
+        title: "Introduction to Layers",
+        content: (
+          <div className="text-gray-200">
+            <p>Blockchain is a distributed ledger technology...</p>
+            {/* More content */}
+          </div>
+        ),
+      },
+      // More content steps...
+    ],
+    shells: 10,
+  },
+];
+
+export const devLevels: Level[] = [
+  {
+    id: "10",
+    title: "Building Sandcastles in the Cloud",
+    description: "What are Smart Contracts?",
+    content: [
+      {
+        title: "Introduction to Blockchain",
+        content: (
+          <div className="text-gray-200">
+            <p>Blockchain is a distributed ledger technology...</p>
+            {/* More content */}
+          </div>
+        ),
+      },
+      // More content steps...
+    ],
+    shells: 10,
+  },
+  {
+    id: "11",
+    title: "Coding the Perfect Wave",
+    description: "What are DApps and how to develop them",
+    content: [
+      {
+        title: "Introduction to Crosschain",
+        content: (
+          <div className="text-gray-200">
+            <p>Blockchain is a distributed ledger technology...</p>
+            {/* More content */}
+          </div>
+        ),
+      },
+      // More content steps...
+    ],
+    shells: 10,
+  },
+  {
+    id: "12",
+    title: "Underwater Architecture",
+    description: "Blockchain Protocols",
+    content: [
+      {
+        title: "Coming soon",
+        content: <div className="text-gray-200">{/* More content */}</div>,
+      },
+      // More content steps...
+    ],
+    shells: 10,
+  },
+];
+
+export const daoLevels: Level[] = [
+  {
+    id: "13",
+    title: "Surfers' Community Council",
+    description: "Intro to DAOs",
+    content: [
+      {
+        title: "Introduction to Blockchain",
+        content: (
+          <div className="text-gray-200">
+            <p>Blockchain is a distributed ledger technology...</p>
+            {/* More content */}
+          </div>
+        ),
+      },
+      // More content steps...
+    ],
+    shells: 10,
+  },
+  {
+    id: "14",
+    title: "Voting with Your Surfboard",
+    description: "Governance Tokens",
+    content: [
+      {
+        title: "Introduction to Crosschain",
+        content: (
+          <div className="text-gray-200">
+            <p>Blockchain is a distributed ledger technology...</p>
+            {/* More content */}
+          </div>
+        ),
+      },
+      // More content steps...
+    ],
+    shells: 10,
+  },
+  {
+    id: "15",
+    title: "Shaping the Future of Surfing",
+    description: "Proposal Systems",
+    content: [
+      {
+        title: "Introduction to Layers",
+        content: (
+          <div className="text-gray-200">
+            <p>Blockchain is a distributed ledger technology...</p>
+            {/* More content */}
+          </div>
+        ),
+      },
+      // More content steps...
+    ],
+    shells: 10,
+  },
+];
+
+export const socialLevels: Level[] = [
+  {
+    id: "16",
+    title: "Riding the Viral Wave",
+    description: "Web3 Social Platforms",
+    content: [
+      {
+        title: "Introduction to Blockchain",
+        content: (
+          <div className="text-gray-200">
+            <p>Blockchain is a distributed ledger technology...</p>
+            {/* More content */}
+          </div>
+        ),
+      },
+      // More content steps...
+    ],
+    shells: 10,
+  },
+  {
+    id: "17",
+    title: "Surf Tribe Connections",
+    description: "Decentralized Identities",
+    content: [
+      {
+        title: "Introduction to Crosschain",
+        content: (
+          <div className="text-gray-200">
+            <p>Blockchain is a distributed ledger technology...</p>
+            {/* More content */}
+          </div>
+        ),
+      },
+      // More content steps...
+    ],
+    shells: 10,
+  },
+  {
+    id: "18",
+    title: "Beach Party Invites",
+    description: "Token-Gated Communities",
+    content: [
+      {
+        title: "Introduction to Layers",
+        content: (
+          <div className="text-gray-200">
+            <p>Blockchain is a distributed ledger technology...</p>
+            {/* More content */}
+          </div>
+        ),
+      },
+      // More content steps...
+    ],
+    shells: 10,
+  },
+];
+
+export const metaverseLevels: Level[] = [
+  {
+    id: "19",
+    title: "Virtual Surf Simulator",
+    description: "Intro to Metaverse",
+    content: [
+      {
+        title: "Introduction to Blockchain",
+        content: (
+          <div className="text-gray-200">
+            <p>Blockchain is a distributed ledger technology...</p>
+            {/* More content */}
+          </div>
+        ),
+      },
+      // More content steps...
+    ],
+    shells: 10,
+  },
+  {
+    id: "20",
+    title: "Building Your Dream Beach",
+    description: "Virtual Real Estate",
+    content: [
+      {
+        title: "Introduction to Crosschain",
+        content: (
+          <div className="text-gray-200">
+            <p>Blockchain is a distributed ledger technology...</p>
+            {/* More content */}
+          </div>
+        ),
+      },
+      // More content steps...
+    ],
+    shells: 10,
+  },
+  {
+    id: "21",
+    title: "Surf Across Realities",
+    description: "Interoperability",
+    content: [
+      {
+        title: "Introduction to Layers",
+        content: (
+          <div className="text-gray-200">
+            <p>Blockchain is a distributed ledger technology...</p>
+            {/* More content */}
+          </div>
+        ),
+      },
+      // More content steps...
+    ],
+    shells: 10,
+  },
+];
+
+export const walletLevels: Level[] = [
+  {
+    id: "22",
+    title: "Intro to wallets",
+    description: "Wallets and Security",
+    content: [
+      {
+        title: "Introduction to Blockchain",
+        content: (
+          <div className="text-gray-200">
+            <p>Blockchain is a distributed ledger technology...</p>
+            {/* More content */}
+          </div>
+        ),
+      },
+      // More content steps...
+    ],
+    shells: 10,
+  },
+  {
+    id: "23",
+    title: "Spotting Shark Fins",
+    description: "Scam Prevention",
+    content: [
+      {
+        title: "Introduction to Crosschain",
+        content: (
+          <div className="text-gray-200">
+            <p>Blockchain is a distributed ledger technology...</p>
+            {/* More content */}
+          </div>
+        ),
+      },
+      // More content steps...
+    ],
+    shells: 10,
+  },
+  {
+    id: "24",
+    title: "Safe Surfing Guide",
+    description: "Best Practices",
+    content: [
+      {
+        title: "Introduction to Layers",
+        content: (
+          <div className="text-gray-200">
+            <p>Blockchain is a distributed ledger technology...</p>
+            {/* More content */}
+          </div>
+        ),
+      },
+      // More content steps...
+    ],
+    shells: 10,
+  },
+];
+
+export const vibesLevels: Level[] = [
+  {
+    id: "25",
+    title: "Speak Like a Local",
+    description: "Common Web3 Terms to become cultural",
+    content: [
+      {
+        title: "Introduction to Blockchain",
+        content: (
+          <div className="text-gray-200">
+            <p>Blockchain is a distributed ledger technology...</p>
+            {/* More content */}
+          </div>
+        ),
+      },
+      // More content steps...
+    ],
+    shells: 10,
   },
 ];

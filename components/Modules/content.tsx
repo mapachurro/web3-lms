@@ -3,8 +3,7 @@
 import React from "react";
 import { modules } from "@/lib/modules";
 import ModuleContentHeader from "./module-content-header";
-// import SurfMap from "./SurfMap";
-import Puzzle from "./Puzzle";
+import SurfMap from "./SurfMap";
 
 interface ModuleContentProps {
   moduleId: string;
@@ -23,7 +22,7 @@ const ModuleContent: React.FC<ModuleContentProps> = ({ moduleId, levelId }) => {
   return (
     <div className="py-28 px-10 w-full">
       <ModuleContentHeader moduleData={moduleData} moduleId={moduleId} />
-      <Puzzle moduleId={moduleId} />
+      <SurfMap moduleId={moduleId} />
     </div>
   );
 };

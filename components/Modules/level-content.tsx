@@ -14,13 +14,39 @@ const LevelContent = ({
   levelId: string;
 }) => {
   const router = useRouter();
-  const { levels } = getLevelsForModule(moduleId) as ModuleLevels;
-  const level = levels.find((l: Level) => l.id === levelId);
+  const [level, setLevel] = useState<Level | null>(null);
   const [currentStep, setCurrentStep] = useState(0);
   const [progress, setProgress] = useState(0);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [isLevelNotFound, setIsLevelNotFound] = useState(false);
 
   useEffect(() => {
+    // Find the correct level across all map parts
+    const mapParts = [
+      "welcome",
+      "nft",
+      "defi",
+      "dev",
+      "dao",
+      "social",
+      "metaverse",
+      "wallets",
+      "vibes",
+    ]; // Add all map parts here
+    let foundLevel: Level | null = null;
+    for (const part of mapParts) {
+      const { levels } = getLevelsForModule(moduleId, part) as ModuleLevels;
+      foundLevel = levels.find((l: Level) => l.id === levelId) || null;
+      if (foundLevel) break;
+    }
+
+    if (foundLevel) {
+      setLevel(foundLevel);
+      setIsLevelNotFound(false);
+    } else {
+      setIsLevelNotFound(true);
+    }
+
     if (!isLoaded) {
       const savedProgress = getItem(`progress_${moduleId}_${levelId}`);
       if (savedProgress) {
@@ -49,8 +75,12 @@ const LevelContent = ({
     }
   }, [currentStep, level, moduleId, levelId, isLoaded]);
 
+  if (isLevelNotFound) {
+    return <div>Level not found. Please check the URL and try again.</div>;
+  }
+
   if (!level) {
-    return <div>Level not found</div>;
+    return <div>Loading...</div>;
   }
 
   const content = Array.isArray(level.content)

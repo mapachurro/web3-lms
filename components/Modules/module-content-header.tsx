@@ -1,7 +1,7 @@
-import { levels } from "@/lib/module1-levels";
 import { ShareIcon } from "@heroicons/react/24/solid";
 import React, { useEffect, useState } from "react";
 import { getItem } from "@/utils/localStorage";
+import { getLevelsForModule } from "@/utils/moduleLevels";
 
 const ModuleContentHeader = ({ moduleData, moduleId }: any) => {
   const [isCopied, setIsCopied] = useState<boolean>(false);
@@ -10,10 +10,19 @@ const ModuleContentHeader = ({ moduleData, moduleId }: any) => {
   useEffect(() => {
     const calculateProgress = () => {
       const moduleProgress = getItem(`moduleProgress_${moduleId}`) || {};
-      const totalProgress = levels.reduce((acc, level) => {
+      // Get all levels for this module
+      const allLevels = ["welcome", "nft"].flatMap((mapPart) => {
+        const { levels } = getLevelsForModule(moduleId, mapPart);
+        return levels;
+      });
+
+      if (allLevels.length === 0) return 0; // Return 0 if no levels found
+
+      const totalProgress = allLevels.reduce((acc, level) => {
         return acc + (moduleProgress[level.id] || 0);
       }, 0);
-      return Math.round(totalProgress / levels.length);
+
+      return Math.round(totalProgress / allLevels.length);
     };
 
     setProgressPercentage(calculateProgress());

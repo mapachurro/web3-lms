@@ -1,22 +1,46 @@
-import { levels as module1Levels } from "@/lib/module1-levels";
+import {
+  nftLevels,
+  welcomeLevels,
+  defiLevels,
+  devLevels,
+  daoLevels,
+  socialLevels,
+  metaverseLevels,
+  walletLevels,
+  vibesLevels,
+} from "@/lib/module1-levels";
 import { Level } from "@/types/levels";
 
 export const getLevelsForModule = (
-  moduleId: string
+  moduleId: string,
+  mapPart: string
 ): { levels: Level[]; comingSoon: boolean } => {
   switch (moduleId) {
     case "1":
-      return { levels: module1Levels, comingSoon: false };
-    case "2":
-    case "3":
-    case "4":
-      // For modules 2, 3, 4, or any other future modules that are not yet implemented
-      return { levels: [], comingSoon: true };
+      switch (mapPart) {
+        case "welcome":
+          return { levels: welcomeLevels, comingSoon: false };
+        case "nft":
+          return { levels: nftLevels, comingSoon: false };
+        case "defi":
+          return { levels: defiLevels, comingSoon: false };
+        case "dev":
+          return { levels: devLevels, comingSoon: false };
+        case "dao":
+          return { levels: daoLevels, comingSoon: false };
+        case "social":
+          return { levels: socialLevels, comingSoon: false };
+        case "metaverse":
+          return { levels: metaverseLevels, comingSoon: false };
+        case "wallets":
+          return { levels: walletLevels, comingSoon: false };
+        case "vibes":
+          return { levels: vibesLevels, comingSoon: false };
+        default:
+          return { levels: [], comingSoon: true };
+      }
+    // ... other module cases
     default:
-      // Instead of throwing an error, we'll return comingSoon: true for any unknown module
-      console.warn(
-        `No levels found for module ${moduleId}. Showing 'Coming Soon'.`
-      );
       return { levels: [], comingSoon: true };
   }
 };
