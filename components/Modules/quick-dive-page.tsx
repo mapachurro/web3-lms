@@ -68,7 +68,7 @@ const QuickDivePage: React.FC = () => {
 
   const handleNewQuestion = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("new question");
+
     if (newQuestion.trim()) {
       handleAskQuestion(newQuestion);
       setNewQuestion("");

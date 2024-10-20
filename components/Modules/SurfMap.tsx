@@ -107,7 +107,6 @@ const SurfMap = ({ moduleId }: { moduleId: string }) => {
               <button
                 onClick={() => {
                   const url = `/modules/${moduleId}/level/${level.id}`;
-                  console.log("Navigating to:", url);
                   router.push(url);
                 }}
                 className="text-blue-600 hover:text-blue-800"

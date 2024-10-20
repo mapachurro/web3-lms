@@ -4,8 +4,6 @@ import clientPromise from "@/lib/mongodb";
 export async function POST(request: Request) {
   const { userId, shellsToAdd } = await request.json();
 
-  console.log("received data:", userId, shellsToAdd);
-
   if (!userId) {
     return new Response(JSON.stringify({ error: "User Id is required" }), {
       status: 400,
@@ -35,8 +33,6 @@ export async function POST(request: Request) {
       { $inc: { shells: shellsToAdd } },
       { returnDocument: "after" }
     );
-
-    console.log("Update result:", result);
 
     if (!result) {
       // No document was found or updated

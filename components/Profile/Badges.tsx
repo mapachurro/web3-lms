@@ -6,7 +6,8 @@ import Button from "@/components/UI/Button/Button";
 import { ethers } from "ethers";
 import SurfboardNFTAbi from "@/utils/SurfboardNFTAbi.json";
 import Image from "next/image";
-import { useWallets } from "@privy-io/react-auth";
+import { usePrivy, useWallets } from "@privy-io/react-auth";
+import { useSmartWallets } from "@privy-io/react-auth/smart-wallets";
 
 interface Surfboard {
   id: number;
@@ -14,35 +15,43 @@ interface Surfboard {
 }
 
 const contractAddress = process.env
-  .NEXT_PUBLIC_SURFBOARD_NFT_DEPLOYED_CONTRACT_ADDRESS as string;
+  .NEXT_PUBLIC_SURFBOARD_NFT_DEPLOYED_CONTRACT_ADDRESS as `0x${string}`;
 
 const BadgesSection: React.FC<{ fullAddress: string }> = ({ fullAddress }) => {
   const router = useRouter();
-  const { wallets } = useWallets();
+  const { user, login } = usePrivy();
+  const { client } = useSmartWallets();
   const [surfboards, setSurfboards] = useState<Surfboard[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchSurfboards = async () => {
-      console.log("Fetching surfboards for address:", fullAddress);
-      if (!fullAddress || wallets.length === 0) return;
+      if (!user || !client) {
+        await login();
+        return;
+      }
 
+      const smartWallet = user.linkedAccounts.find(
+        (account) => account.type === "smart_wallet"
+      );
+      if (!smartWallet) {
+        console.error("Smart wallet not found");
+        setLoading(false);
+        return;
+      }
       try {
-        const wallet = wallets[0];
-        console.log("Using wallet:", wallet.address);
-        const provider = await wallet.getEthereumProvider();
-        const ethersProvider = new ethers.BrowserProvider(provider);
-        const signer = await ethersProvider.getSigner();
+        console.log("Smart Wallet Address:", smartWallet.address);
+        console.log("Smart Wallet Type:", smartWallet.type);
 
-        console.log("Contract address:", contractAddress);
+        const provider = new ethers.BrowserProvider(client);
         const contract = new ethers.Contract(
           contractAddress,
           SurfboardNFTAbi,
-          signer
+          provider
         );
 
-        console.log("Calling getNFTsOwned for address:", fullAddress);
-        const tokenIds = await contract.getNFTsOwned(fullAddress);
+        console.log("Calling getNFTsOwned for address:", smartWallet.address);
+        const tokenIds = await contract.getNFTsOwned(smartWallet.address);
         console.log("Received tokenIds:", tokenIds);
 
         const surfboardPromises = tokenIds.map(async (id: bigint) => {
@@ -76,7 +85,7 @@ const BadgesSection: React.FC<{ fullAddress: string }> = ({ fullAddress }) => {
     };
 
     fetchSurfboards();
-  }, [fullAddress, wallets]);
+  }, [user, client, login]);
 
   return (
     <>

@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import { Surfboard, UserCategory } from "@/types/onboarding";
 import { determineUserRole } from "@/utils/userRole";
 import Image from "next/image";
-import { usePrivy } from "@privy-io/react-auth";
+import { usePrivy, useWallets } from "@privy-io/react-auth";
 import { useSmartWallets } from "@privy-io/react-auth/smart-wallets";
 import { base, baseSepolia } from "viem/chains";
 import { encodeFunctionData } from "viem";
 import SurfboardNFTAbi from "@/utils/SurfboardNFTAbi.json";
+import { ethers } from "ethers";
 
 interface ConfirmationStepProps {
   category: UserCategory;
@@ -23,7 +24,8 @@ const ConfirmationStep: React.FC<ConfirmationStepProps> = ({
 }) => {
   const [isMinting, setIsMinting] = useState(false);
   const [isMinted, setIsMinted] = useState(false);
-  const { login } = usePrivy();
+  const { user } = usePrivy();
+  const { wallets } = useWallets();
   const { client } = useSmartWallets();
 
   if (!selectedSurfboard) return null;
@@ -31,14 +33,8 @@ const ConfirmationStep: React.FC<ConfirmationStepProps> = ({
   const handleMint = async () => {
     setIsMinting(true);
     try {
-      if (!client) {
-        await login();
-        return; // Exit the function and wait for re-render with the client
-      }
-
       const contractAddress = process.env
         .NEXT_PUBLIC_SURFBOARD_NFT_DEPLOYED_CONTRACT_ADDRESS as `0x${string}`;
-      console.log("contract address", contractAddress);
       if (!contractAddress) {
         throw new Error("Contract address is not defined");
       }
@@ -55,20 +51,42 @@ const ConfirmationStep: React.FC<ConfirmationStepProps> = ({
       );
       const tokenURI = `data:application/json;base64,${encodedMetadata}`;
 
-      console.log("client account address", client.account.address);
-      // Prepare the transaction data
-      const txData = encodeFunctionData({
-        abi: SurfboardNFTAbi,
-        functionName: "mintTo",
-        args: [client.account.address, tokenURI],
-      });
+      let txHash;
+      const wallet = wallets[0];
 
-      const txHash = await client.sendTransaction({
-        account: client.account,
-        chain: baseSepolia,
-        to: contractAddress,
-        data: txData,
-      });
+      if (client) {
+        // Prepare the transaction data
+        const txData = encodeFunctionData({
+          abi: SurfboardNFTAbi,
+          functionName: "mintTo",
+          args: [client.account.address, tokenURI],
+        });
+
+        txHash = await client.sendTransaction({
+          account: client.account,
+          chain: baseSepolia,
+          to: contractAddress,
+          data: txData,
+        });
+      } else if (wallet) {
+        // Use regular wallet
+        console.log("Minting with regular wallet");
+
+        const ethProvider = await wallet.getEthereumProvider();
+        const provider = new ethers.BrowserProvider(ethProvider);
+        const signer = await provider.getSigner();
+
+        const contract = new ethers.Contract(
+          contractAddress,
+          SurfboardNFTAbi,
+          signer
+        );
+
+        const tx = await contract.mintTo(wallet.address, tokenURI);
+        txHash = tx.hash;
+      } else {
+        throw new Error("No wallet available for minting");
+      }
 
       console.log("Transaction hash:", txHash);
 
@@ -76,7 +94,6 @@ const ConfirmationStep: React.FC<ConfirmationStepProps> = ({
       onMintComplete();
     } catch (error) {
       console.error("Error minting surfboard:", error);
-      alert("Error minting surfboard. Please try again.");
     } finally {
       setIsMinting(false);
     }

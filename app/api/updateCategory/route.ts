@@ -2,7 +2,6 @@ import { NextResponse } from "next/server";
 import clientPromise from "@/lib/mongodb";
 
 export async function POST(req: Request) {
-  console.log("updateCategory API called");
   const {
     id,
     category,
@@ -11,15 +10,6 @@ export async function POST(req: Request) {
     knowledgeCheckCorrect,
     knowledgeScore,
   } = await req.json();
-
-  console.log("Received data:", {
-    id,
-    category,
-    onboardingCompleted,
-    knowledgeCheckAnswer,
-    knowledgeCheckCorrect,
-    knowledgeScore,
-  });
 
   if (!id) {
     return new Response(JSON.stringify({ error: "User Id is required" }), {

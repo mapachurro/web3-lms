@@ -38,7 +38,7 @@ const ClientProvider = ({ children }: any) => {
           theme: "#0e1016",
           accentColor: "#0055FF",
           logo: "/images/logo_white.png",
-          walletList: ["coinbase_wallet"],
+          walletList: ["coinbase_wallet", "metamask", "rainbow"],
         },
         // externalWallets: {
         //   coinbaseWallet: {

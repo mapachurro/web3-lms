@@ -36,7 +36,6 @@ const ModulesNavbar = () => {
 
   const { logout } = useLogout({
     onSuccess: () => {
-      console.log("User logged out");
       router.push("/");
     },
   });

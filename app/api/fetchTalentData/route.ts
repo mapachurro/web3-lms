@@ -43,7 +43,6 @@ export async function GET(request: NextRequest) {
     }
 
     const data = await response.json();
-    console.log("Data from Talent Protocol API:", data); // Log the data
     return NextResponse.json(data);
   } catch (error) {
     console.error("Error fetching talent data:", error);
