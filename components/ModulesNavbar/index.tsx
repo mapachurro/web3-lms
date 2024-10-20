@@ -54,9 +54,13 @@ const ModulesNavbar = () => {
     };
 
     loadUserData();
-  }, [user?.id]);
+  }, [user]);
 
-  const fullAddress = user?.wallet?.address;
+  const smartWallet = user?.linkedAccounts.find(
+    (account) => account.type === "smart_wallet"
+  );
+
+  const fullAddress = smartWallet?.address || user?.wallet?.address;
   const truncatedAddress = truncateAddress(fullAddress);
 
   const { streakCount, buttonDisabled, handleGMClick, loading } = useStreak();

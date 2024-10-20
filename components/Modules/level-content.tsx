@@ -60,7 +60,7 @@ const LevelContent = ({
       }
       setIsLoaded(true);
     }
-  }, [moduleId, levelId, isLoaded]);
+  }, [moduleId, levelId, isLoaded, isLevelCompleted]);
 
   useEffect(() => {
     if (level && isLoaded && !isLevelCompleted) {

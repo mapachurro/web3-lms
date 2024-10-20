@@ -1,25 +1,14 @@
 import { ethers } from "ethers";
 import SurfboardNFTAbi from "./SurfboardNFTAbi.json";
+import { encodeFunctionData } from "viem";
 
 const contractAddress = process.env
   .NEXT_PUBLIC_SURFBOARD_NFT_DEPLOYED_CONTRACT_ADDRESS as string;
 
-console.log(
-  "NEXT_PUBLIC_SURFBOARD_NFT_DEPLOYED_CONTRACT_ADDRESS: ",
-  contractAddress
-);
-
-export const mintSurfboard = async (
-  signer: ethers.Signer,
+export const prepareMintSurfboardTransaction = (
+  address: string,
   imageUrl: string
-): Promise<ethers.ContractTransactionResponse> => {
-  const contract = new ethers.Contract(
-    contractAddress,
-    SurfboardNFTAbi,
-    signer
-  );
-  const address = await signer.getAddress();
-
+) => {
   // Create a simple metadata object
   const metadata = {
     name: "Surfboard NFT",
@@ -33,8 +22,12 @@ export const mintSurfboard = async (
   );
   const tokenURI = `data:application/json;base64,${encodedMetadata}`;
 
-  // Call the mintTo function with the tokenURI
-  return await contract.mintTo(address, tokenURI);
+  // Prepare the transaction data
+  return encodeFunctionData({
+    abi: SurfboardNFTAbi,
+    functionName: "mintTo",
+    args: [address, tokenURI],
+  });
 };
 
 export const getNFTsOwned = async (

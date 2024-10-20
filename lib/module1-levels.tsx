@@ -259,8 +259,8 @@ export const welcomeLevels: Level[] = [
               ✏️ something in it, everyone can see it, and no one can erase it.
             </p>
             <p className="text-lg">
-              It's used to keep track of things like money or who owns what,
-              without needing a central authority to manage it.
+              It&apos;s used to keep track of things like money or who owns
+              what, without needing a central authority to manage it.
             </p>
           </div>
         ),
@@ -272,17 +272,17 @@ export const welcomeLevels: Level[] = [
             <h3 className="text-xl mt-4 mb-2">How are they different?</h3>
 
             <p className="text-lg mb-4">
-              Imagine you're at a beach with three different types of waves.
-              Let's dive in and see how they're different!
+              Imagine you&apos;re at a beach with three different types of
+              waves. Let&apos;s dive in and see how they&apos;re different!
             </p>
 
             <h4 className="text-lg font-bold mb-2">
               🌊 Blockchain: The Big Wave
             </h4>
             <p className="text-lg mb-4">
-              Blockchain is like the big wave that carries everything. It's the
-              technology that makes the other two possible. Remember our giant
-              shared notebook? That's blockchain!
+              Blockchain is like the big wave that carries everything. It&apos;s
+              the technology that makes the other two possible. Remember our
+              giant shared notebook? That&apos;s blockchain!
             </p>
           </div>
         ),
@@ -292,10 +292,10 @@ export const welcomeLevels: Level[] = [
         content: (
           <div className="text-gray-200">
             <p className="text-lg mb-4">
-              Crypto is like riding the blockchain wave. It's digital money that
-              uses blockchain technology. Bitcoin, for example, is the most
-              famous surfer on this wave. It's exciting because it can change
-              how we handle money - from paying bills to buying coffee!
+              Crypto is like riding the blockchain wave. It&apos;s digital money
+              that uses blockchain technology. Bitcoin, for example, is the most
+              famous surfer on this wave. It&apos;s exciting because it can
+              change how we handle money - from paying bills to buying coffee!
             </p>
           </div>
         ),
@@ -305,8 +305,8 @@ export const welcomeLevels: Level[] = [
         content: (
           <div className="text-gray-200">
             <p className="text-lg mb-4">
-              Web3 is like the whole beach experience. It's a vision of a new
-              internet built on blockchain technology. It includes
+              Web3 is like the whole beach experience. It&apos;s a vision of a
+              new internet built on blockchain technology. It includes
               cryptocurrencies, but also things like decentralized apps and
               digital ownership.
             </p>
@@ -320,7 +320,7 @@ export const welcomeLevels: Level[] = [
             <p className="text-lg italic mt-6">
               Just as the digital world has transformed how we communicate,
               watch, learn, and shop, blockchain, crypto, and Web3 are set to
-              revolutionize how we handle money and interact online. It's a
+              revolutionize how we handle money and interact online. It&apos;s a
               whole new world of possibilities!
             </p>
             <p className="text-lg mt-2">
@@ -342,7 +342,7 @@ export const welcomeLevels: Level[] = [
         content: (
           <div className="text-gray-200">
             <p className="mb-4">
-              Imagine you're a surfer who loves to ride waves on different
+              Imagine you&apos;re a surfer who loves to ride waves on different
               beaches. Each beach is like a different blockchain, with its own
               unique waves (transactions) and surfboards (tokens).
             </p>
@@ -370,17 +370,17 @@ export const welcomeLevels: Level[] = [
           <div className="text-gray-200">
             <p className="mb-4">
               Base is like a brand new, cutting-edge surf park built on top of
-              Ethereum's ocean. It's designed to make using blockchain easier,
-              faster, and cheaper for everyone.
+              Ethereum&apos;s ocean. It&apos;s designed to make using blockchain
+              easier, faster, and cheaper for everyone.
             </p>
             <h3 className="text-xl font-bold mb-2">What makes Base special?</h3>
             <ul className="list-disc pl-6 mb-4">
               <li>
-                It's a Layer 2 solution, meaning it's built on top of Ethereum
-                for improved speed and lower costs
+                It&apos;s a Layer 2 solution, meaning it&apos;s built on top of
+                Ethereum for improved speed and lower costs
               </li>
               <li>
-                It's backed by Coinbase, a major player in the crypto world
+                It&apos;s backed by Coinbase, a major player in the crypto world
               </li>
               <li>
                 It aims to make Web3 accessible to everyone, just like a

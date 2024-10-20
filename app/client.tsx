@@ -40,12 +40,12 @@ const ClientProvider = ({ children }: any) => {
           logo: "/images/logo_white.png",
           walletList: ["coinbase_wallet"],
         },
-        externalWallets: {
-          coinbaseWallet: {
-            // Valid connection options include 'eoaOnly' (default), 'smartWalletOnly', or 'all'
-            connectionOptions: "smartWalletOnly",
-          },
-        },
+        // externalWallets: {
+        //   coinbaseWallet: {
+        //     // Valid connection options include 'eoaOnly' (default), 'smartWalletOnly', or 'all'
+        //     connectionOptions: "smartWalletOnly",
+        //   },
+        // },
         // Create embedded wallets for users who don't have a wallet
         embeddedWallets: {
           createOnLogin: "users-without-wallets",

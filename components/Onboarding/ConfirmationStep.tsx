@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import { Surfboard, UserCategory } from "@/types/onboarding";
 import { determineUserRole } from "@/utils/userRole";
 import Image from "next/image";
-import { usePrivy, useWallets } from "@privy-io/react-auth";
-import { mintSurfboard } from "@/utils/contract";
-import { ethers } from "ethers";
+import { usePrivy } from "@privy-io/react-auth";
+import { useSmartWallets } from "@privy-io/react-auth/smart-wallets";
+import { base, baseSepolia } from "viem/chains";
+import { encodeFunctionData } from "viem";
+import SurfboardNFTAbi from "@/utils/SurfboardNFTAbi.json";
 
 interface ConfirmationStepProps {
   category: UserCategory;
@@ -21,31 +23,54 @@ const ConfirmationStep: React.FC<ConfirmationStepProps> = ({
 }) => {
   const [isMinting, setIsMinting] = useState(false);
   const [isMinted, setIsMinted] = useState(false);
-  const { login, createWallet } = usePrivy();
-  const { wallets } = useWallets();
+  const { login } = usePrivy();
+  const { client } = useSmartWallets();
 
   if (!selectedSurfboard) return null;
 
   const handleMint = async () => {
     setIsMinting(true);
     try {
-      let wallet = wallets[0]; // Assuming the first wallet is the one we want to use
-      if (!wallet) {
-        await createWallet();
-        await login(); // This might be necessary to refresh the wallets list
-        wallet = wallets[0];
+      if (!client) {
+        await login();
+        return; // Exit the function and wait for re-render with the client
       }
 
-      if (!wallet) {
-        throw new Error("No wallet available");
+      const contractAddress = process.env
+        .NEXT_PUBLIC_SURFBOARD_NFT_DEPLOYED_CONTRACT_ADDRESS as `0x${string}`;
+      console.log("contract address", contractAddress);
+      if (!contractAddress) {
+        throw new Error("Contract address is not defined");
       }
-      const provider = await wallet.getEthereumProvider();
-      const ethersProvider = new ethers.BrowserProvider(provider);
-      const signer = await ethersProvider.getSigner();
+      // Create metadata
+      const metadata = {
+        name: "Surfboard NFT",
+        description: "A unique surfboard for the Base ecosystem",
+        image: selectedSurfboard.img,
+      };
 
-      // Mint the NFT
-      const tx = await mintSurfboard(signer, selectedSurfboard.img);
-      await tx.wait();
+      // Convert metadata to a JSON string and encode as base64
+      const encodedMetadata = Buffer.from(JSON.stringify(metadata)).toString(
+        "base64"
+      );
+      const tokenURI = `data:application/json;base64,${encodedMetadata}`;
+
+      console.log("client account address", client.account.address);
+      // Prepare the transaction data
+      const txData = encodeFunctionData({
+        abi: SurfboardNFTAbi,
+        functionName: "mintTo",
+        args: [client.account.address, tokenURI],
+      });
+
+      const txHash = await client.sendTransaction({
+        account: client.account,
+        chain: baseSepolia,
+        to: contractAddress,
+        data: txData,
+      });
+
+      console.log("Transaction hash:", txHash);
 
       setIsMinted(true);
       onMintComplete();
