@@ -53,12 +53,16 @@ const SurfMap = ({ moduleId }: { moduleId: string }) => {
 
     if (comingSoon) {
       return (
-        <div className="absolute inset-0 flex items-center justify-center bg-gray-700 bg-opacity-10 backdrop-blur-sm">
-          <div className="text-center">
-            <h2 className="text-3xl font-cg-regular text-white">Coming Soon</h2>
-            <p className="text-lg text-gray-300">
-              This module is being cooked up. Stay tuned!
-            </p>
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="relative w-full h-full">
+            {/* Blurred background */}
+            <div className="absolute inset-0 bg-gray-800 bg-opacity-50 backdrop-blur-sm"></div>
+            {/* Coming Soon text */}
+            <div className="absolute inset-0 flex items-center justify-center">
+              <h2 className="text-3xl font-cg-regular text-white">
+                Coming Soon
+              </h2>
+            </div>
           </div>
         </div>
       );
@@ -116,6 +120,28 @@ const SurfMap = ({ moduleId }: { moduleId: string }) => {
       </div>
     ));
   };
+
+  const allModulesComingSoon = [
+    "welcome",
+    "nft",
+    "defi",
+    "dev",
+    "dao",
+    "social",
+    "metaverse",
+    "wallets",
+    "vibes",
+  ].every((part) => getLevelsForModule(moduleId, part).comingSoon);
+
+  if (allModulesComingSoon) {
+    return (
+      <div className="h-[1200px] relative bg-no-repeat bg-cover bg-center bg-[url('/images/surfParkMap.svg')] overflow-hidden">
+        <div className="absolute inset-0 bg-gray-800 bg-opacity-50 backdrop-blur-sm flex items-center justify-center">
+          <h2 className="text-5xl font-cg-regular text-white">Coming Soon</h2>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <>
